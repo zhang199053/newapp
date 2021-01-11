@@ -3,17 +3,17 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    signingConfigs {
-        crm {
-            keyAlias 'crm'
-            keyPassword '123456'
-            storeFile file('android.keystore')
-            storePassword '123456'
-        }
-    }
+//    signingConfigs {
+//        crm {
+//            keyAlias 'crm'
+//            keyPassword '123456'
+//            storeFile file('android.keystore')
+//            storePassword '123456'
+//        }
+//    }
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.yh"
+        applicationId "com.cyb"
         minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
