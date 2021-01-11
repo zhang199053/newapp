@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".Model.My.PersonalDetailsActivity">
+
+    <com.ymz.ViewUtils.NavigationBar
+        android:id="@+id/nb_agre"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:title="个人信息设置" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/srl_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <!--头部动画-->
+            <com.scwang.smartrefresh.layout.header.ClassicsHeader
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout style="@style/mine_margin">
+                    <!--头像列表-->
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="54dp"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="头像"
+                            android:textColor="@color/huise"
+                            android:textSize="14dp" />
+
+                        <View
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
+
+                        <ImageView
+                            android:id="@+id/tv_head_portrait"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/icon_mine_qst" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5px"
+                        android:background="@color/line_huise" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="54dp"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="姓名"
+                            android:textColor="@color/huise"
+                            android:textSize="14dp" />
+
+
+                        <TextView
+                            android:id="@+id/tv_name"
+                            style="@style/user_et_style"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:lines="1"
+                            android:textColor="@color/black"
+
+                            android:textSize="16dp" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5px"
+                        android:background="@color/line_huise" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_sex"
+                        android:layout_width="match_parent"
+                        android:layout_height="54dp"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="性别"
+                            android:textColor="@color/huise"
+                            android:textSize="14dp" />
+
+                        <View
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:id="@+id/tv_sex"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:text=""
+                            android:textColor="@color/black"
+                            android:textSize="16dp"
+                            android:visibility="visible" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:src="@mipmap/icon_mine_yjt"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5px"
+                        android:background="@color/line_huise" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="54dp"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="联系电话"
+                            android:textColor="@color/huise"
+                            android:textSize="14dp" />
+
+
+                        <TextView
+                            android:id="@+id/tv_phone"
+                            style="@style/user_et_style"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:lines="1"
+                            android:textColor="@color/black"
+
+                            android:textSize="16dp" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5px"
+                        android:background="@color/line_huise" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="54dp"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="部门"
+                            android:textColor="@color/huise"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/tv_bm"
+                            style="@style/user_et_style"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:lines="1"
+                            android:textColor="@color/black"
+
+                            android:textSize="16dp" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5px"
+                        android:background="@color/line_huise" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="54dp"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="岗位"
+                            android:textColor="@color/huise"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tv_gw"
+                            style="@style/user_et_style"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:textColor="@color/black"
+                            android:textSize="16dp" />
+
+                    </LinearLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5px"
+                        android:background="@color/line_huise" />
+                    <!--<View-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="1dp"-->
+                    <!--android:background="@color/gainsboro" />-->
+
+                    <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="50dp"-->
+                    <!--android:layout_marginRight="15dp"-->
+                    <!--android:gravity="center_vertical">-->
+
+                    <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:text="电话"-->
+                    <!--android:textColor="@color/huise"-->
+                    <!--android:textSize="16dp" />-->
+
+                    <!--<View-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="1" />-->
+
+                    <!--<EditText-->
+                    <!--android:id="@+id/tv_phone"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginRight="10dp"-->
+                    <!--android:background="@null"-->
+                    <!--android:inputType="phone"-->
+                    <!--android:lines="1"-->
+                    <!--android:maxLength="11"-->
+                    <!--android:text="12345678910"-->
+                    <!--android:textSize="16dp" />-->
+
+                    <!--<ImageView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:src="@mipmap/free_course" />-->
+
+                    <!--</LinearLayout>-->
+
+                    <!--<View-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="1dp"-->
+                    <!--android:background="@color/gainsboro" />-->
+
+
+                    <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="50dp"-->
+                    <!--android:layout_marginRight="15dp"-->
+                    <!--android:gravity="center_vertical">-->
+
+                    <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:text="邮箱"-->
+                    <!--android:textColor="@color/huise"-->
+                    <!--android:textSize="16dp" />-->
+
+                    <!--<View-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="1" />-->
+
+                    <!--<EditText-->
+                    <!--android:id="@+id/ev_email"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginRight="10dp"-->
+                    <!--android:background="@null"-->
+                    <!--android:inputType="textEmailAddress"-->
+                    <!--android:lines="1"-->
+                    <!--android:text="12345678910@163.com"-->
+                    <!--android:textSize="16dp" />-->
+
+                    <!--<ImageView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:src="@mipmap/free_course" />-->
+
+                    <!--</LinearLayout>-->
+
+                    <!--<View-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="1dp"-->
+                    <!--android:background="@color/gainsboro" />-->
+
+                    <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="50dp"-->
+                    <!--android:layout_marginRight="15dp"-->
+                    <!--android:gravity="center_vertical">-->
+
+                    <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:text="地址"-->
+                    <!--android:textColor="@color/huise"-->
+                    <!--android:textSize="16dp" />-->
+
+                    <!--<View-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="1" />-->
+
+                    <!--<EditText-->
+                    <!--android:id="@+id/ev_address"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginRight="10dp"-->
+                    <!--android:background="@null"-->
+                    <!--android:inputType="text"-->
+                    <!--android:lines="1"-->
+                    <!--android:text="北京市大兴区经海路"-->
+                    <!--android:textSize="16dp" />-->
+
+                    <!--<ImageView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:src="@mipmap/free_course" />-->
+
+                    <!--</LinearLayout>-->
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/iv_qd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="50dp"
+                    android:src="@mipmap/user_qd"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+    </ScrollView>
+</LinearLayout>

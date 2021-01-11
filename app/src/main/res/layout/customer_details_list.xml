@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <!--名称-->
+    <LinearLayout
+        android:id="@+id/ll_fzr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
+
+        <TextView
+            android:id="@+id/tv_tv_fzr_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="客户负责人："
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/tv_fzr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="14dp" />
+    </LinearLayout>
+</LinearLayout>

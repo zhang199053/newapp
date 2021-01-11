@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <com.ymz.ViewUtils.NavigationBar
+        android:id="@+id/nb_agre"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:title="拨打方式设置" />
+
+    <LinearLayout style="@style/mine_margin">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:background="@drawable/ll_khxq_back"
+            android:paddingLeft="14sp"
+            android:paddingRight="14sp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="小号平台"
+                android:textColor="#ff1a1a1a"
+                android:textSize="15sp" />
+
+            <CheckBox
+                android:id="@+id/mCheckBox_call01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="true"
+                android:drawableRight="@drawable/cb_selector"
+                android:padding="10dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:background="@drawable/ll_khxq_back"
+            android:paddingLeft="14sp"
+            android:paddingRight="14sp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="电信回拨"
+                android:textColor="#ff1a1a1a"
+                android:textSize="15sp" />
+
+            <CheckBox
+                android:id="@+id/mCheckBox_call02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="false"
+                android:drawableRight="@drawable/cb_selector"
+                android:padding="10dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:background="@drawable/ll_khxq_back"
+            android:paddingLeft="14sp"
+            android:paddingRight="14sp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="销三郎小号平台"
+                android:textColor="#ff1a1a1a"
+                android:textSize="15sp" />
+
+            <CheckBox
+                android:id="@+id/mCheckBox_call06"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="false"
+                android:drawableRight="@drawable/cb_selector"
+                android:padding="10dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:background="@drawable/ll_khxq_back"
+            android:paddingLeft="14sp"
+            android:paddingRight="14sp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="移动回拨"
+                android:textColor="#ff1a1a1a"
+                android:textSize="15sp" />
+
+            <CheckBox
+                android:id="@+id/mCheckBox_call04"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="false"
+                android:drawableRight="@drawable/cb_selector"
+                android:padding="10dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:background="@drawable/ll_khxq_back"
+            android:paddingLeft="14sp"
+            android:paddingRight="14sp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="拨pan"
+                android:textColor="#ff1a1a1a"
+                android:textSize="15sp" />
+
+            <CheckBox
+                android:id="@+id/mCheckBox_call05"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="false"
+                android:drawableRight="@drawable/cb_selector"
+                android:padding="10dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/ll_khxq_back"
+            android:paddingLeft="14sp"
+            android:paddingRight="14sp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="高频呼叫"
+                android:textColor="#ff1a1a1a"
+                android:textSize="15sp" />
+
+            <CheckBox
+                android:id="@+id/mCheckBox_call03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="false"
+                android:drawableRight="@drawable/cb_selector"
+                android:padding="10dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_set_phone"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/ll_khxq_back"
+            android:orientation="vertical"
+            android:paddingLeft="14sp"
+            android:paddingRight="14sp"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="44dp">
+
+                <EditText
+                    android:id="@+id/ev_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null" />
+                <!--搜索框-->
+                <LinearLayout
+                    android:id="@+id/ll_ss"
+                    android:layout_width="52dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/login_bt_shap11"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="清除"
+                        android:textColor="#ffffffff"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E1EBE9" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_set_zb"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/ll_khxq_back"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="14sp"
+            android:paddingRight="14sp"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="">
+
+                <CheckBox
+                    android:id="@+id/mCheckBox_03"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:button="@null"
+                    android:checked="true"
+                    android:drawableRight="@drawable/cb_selector"
+                    android:padding="10dp"
+                    android:text="全部转拨    " />
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/line_huise" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <CheckBox
+                    android:id="@+id/mCheckBox_04"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:button="@null"
+                    android:checked="false"
+                    android:drawableRight="@drawable/cb_selector"
+                    android:padding="10dp"
+                    android:text="占线转拨  " />
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_qd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:src="@mipmap/user_qd" />
+
+</LinearLayout>

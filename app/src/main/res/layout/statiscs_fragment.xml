@@ -1,0 +1,792 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="@mipmap/icon_tj_top"
+        android:clipToPadding="true"
+        android:fitsSystemWindows="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="12dp"
+            android:text="数据简报"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/srl_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <!--头部动画-->
+            <com.scwang.smartrefresh.layout.header.ClassicsHeader
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="6dp"
+                android:paddingRight="6dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="10dp"
+                            android:background="@color/sys_qs" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="今日简报"
+                            android:textColor="#ff333333"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="108dp"
+                            android:layout_height="78dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/icon_mine_back2"
+                            android:elevation="10sp"
+                            android:orientation="vertical"
+                            android:outlineSpotShadowColor="@color/sys_qs"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="13sp">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="4dp"
+                                    android:src="@mipmap/icon_tj_kh" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="新增客户"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/tv_customer_count"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="5dp"
+                                    android:text="0"
+                                    android:textColor="#ff313131"
+                                    android:textSize="24sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="个"
+                                    android:textColor="#ACACAC"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="10dp"
+                            android:layout_height="match_parent" />
+
+                        <LinearLayout
+                            android:layout_width="108dp"
+                            android:layout_height="78dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/icon_mine_back2"
+                            android:elevation="10sp"
+                            android:orientation="vertical"
+                            android:outlineSpotShadowColor="#90DBCF"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp">
+
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="13sp">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="4dp"
+                                    android:src="@mipmap/icon_kh_lxr" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="新增联系人"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/tv_contacts_count"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="5dp"
+                                    android:text="0"
+                                    android:textColor="#ff313131"
+                                    android:textSize="24sp"
+
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="个"
+                                    android:textColor="#ACACAC"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="10dp"
+                            android:layout_height="match_parent" />
+
+                        <LinearLayout
+                            android:layout_width="108dp"
+                            android:layout_height="78dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/icon_mine_back2"
+                            android:elevation="10sp"
+                            android:orientation="vertical"
+                            android:outlineSpotShadowColor="#90DBCF"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp">
+
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="13sp">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="4dp"
+                                    android:src="@mipmap/icon_tj_sj" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="新增商机"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/tv_business_count"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="5dp"
+                                    android:text="0"
+                                    android:textColor="#ff313131"
+                                    android:textSize="24sp"
+
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="个"
+                                    android:textColor="#ACACAC"
+                                    android:textSize="14sp" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="3dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="10dp"
+                            android:background="@color/sys_qs" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="本周简报"
+                            android:textColor="#ff333333"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scrollbars="none">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:orientation="horizontal">
+
+
+                            <LinearLayout
+                                android:layout_width="fill_parent"
+                                android:layout_height="102dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/icon_mine_back2"
+                                android:elevation="10sp"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:outlineSpotShadowColor="@color/sys_qs"
+                                android:paddingLeft="15sp"
+                                android:paddingRight="15sp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="新增客户"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp" />
+
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+
+                                    android:src="@mipmap/icon_tj_month_kh" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:id="@+id/tv_week_kh"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginRight="2dp"
+                                        android:text="0"
+                                        android:textColor="#ff313131"
+                                        android:textSize="18dp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="个"
+                                        android:textColor="#ACACAC"
+                                        android:textSize="14sp" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="20dp"
+                                android:layout_height="match_parent" />
+
+                            <LinearLayout
+                                android:layout_width="fill_parent"
+                                android:layout_height="102dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/icon_mine_back2"
+                                android:elevation="10sp"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:outlineSpotShadowColor="@color/sys_qs"
+                                android:paddingLeft="8sp"
+                                android:paddingRight="8sp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="新增联系人"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp" />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:src="@mipmap/icon_tj_month_lxr" />
+
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:orientation="horizontal">
+
+
+                                    <TextView
+                                        android:id="@+id/tv_week_lxr"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginRight="2dp"
+                                        android:text="0"
+                                        android:textColor="#ff313131"
+                                        android:textSize="18dp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="个"
+                                        android:textColor="#ACACAC"
+                                        android:textSize="14sp" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="20dp"
+                                android:layout_height="match_parent" />
+
+                            <LinearLayout
+                                android:layout_width="fill_parent"
+                                android:layout_height="102dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/icon_mine_back2"
+                                android:elevation="10sp"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:outlineSpotShadowColor="@color/sys_qs"
+                                android:paddingLeft="15sp"
+                                android:paddingRight="15sp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="新增商机"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp" />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:src="@mipmap/icon_tj_month_sj" />
+
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:orientation="horizontal">
+
+
+                                    <TextView
+                                        android:id="@+id/tv_week_sj"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginRight="2dp"
+                                        android:text="0"
+                                        android:textColor="#ff313131"
+                                        android:textSize="18dp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="个"
+                                        android:textColor="#ACACAC"
+                                        android:textSize="14sp" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="20dp"
+                                android:layout_height="match_parent" />
+
+                            <LinearLayout
+                                android:layout_width="fill_parent"
+                                android:layout_height="102dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/icon_mine_back2"
+                                android:elevation="10sp"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:outlineSpotShadowColor="@color/sys_qs"
+                                android:paddingLeft="15sp"
+                                android:paddingRight="15sp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="收款金额"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp" />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:src="@mipmap/icon_tj_month_sk" />
+
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:id="@+id/tv_week_skje"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginRight="2dp"
+                                        android:text="0"
+                                        android:textColor="#ff313131"
+                                        android:textSize="18dp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="元"
+                                        android:textColor="#ACACAC"
+                                        android:textSize="14sp" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </HorizontalScrollView>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="3dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="10dp"
+                            android:background="@color/sys_qs" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="本月简报"
+                            android:textColor="#ff333333"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/icon_mine_back2"
+                            android:elevation="5dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:outlineSpotShadowColor="@color/sys_qs"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="13sp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="4dp"
+                                android:src="@mipmap/icon_tj_kh" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="新增客户"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+
+
+                            <TextView
+                                android:id="@+id/tv_month_kh"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="5dp"
+                                android:text="0"
+                                android:textColor="#ff313131"
+                                android:textSize="24sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="个"
+                                android:textColor="#ACACAC"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/icon_mine_back2"
+                            android:elevation="5dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:outlineSpotShadowColor="@color/sys_qs"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="13sp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="4dp"
+                                android:src="@mipmap/icon_tj_kh" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="新增联系人"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+
+
+                            <TextView
+                                android:id="@+id/tv_month_lxr"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="5dp"
+                                android:text="0"
+                                android:textColor="#ff313131"
+                                android:textSize="24sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="个"
+                                android:textColor="#ACACAC"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/icon_mine_back2"
+                            android:elevation="5dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:outlineSpotShadowColor="@color/sys_qs"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="13sp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="4dp"
+                                android:src="@mipmap/icon_tj_kh" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="新增商机"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/tv_month_sj"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="5dp"
+                                android:text="0"
+                                android:textColor="#ff313131"
+                                android:textSize="24sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="个"
+                                android:textColor="#ACACAC"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="25dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/icon_mine_back2"
+                            android:elevation="5dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:outlineSpotShadowColor="@color/sys_qs"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="13sp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="4dp"
+                                android:src="@mipmap/icon_tj_skje" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="收款金额"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+
+
+                            <TextView
+                                android:id="@+id/tv_month_skje"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="5dp"
+                                android:text="0"
+                                android:textColor="#ff313131"
+                                android:textSize="24sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="元"
+                                android:textColor="#ACACAC"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+    </ScrollView>
+</LinearLayout>

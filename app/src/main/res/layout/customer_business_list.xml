@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+        <!--<com.ymz.ViewUtils.CustomCircleProgressBar-->
+        <!--android:id="@+id/am_progressbar_two"-->
+        <!--android:layout_width="50dp"-->
+        <!--android:layout_height="50dp"-->
+        <!--app:direction="top"-->
+        <!--app:max_progress="100"-->
+        <!--app:outside_color="@color/blue"-->
+        <!--app:outside_radius="20dp"-->
+        <!--app:progress_text_color="@color/black"-->
+        <!--app:progress_width="2dp"-->
+        <!--app:progrezz="50" />-->
+        <!--<com.ymz.ViewUtils.CircularProgressView-->
+        <!--android:id="@+id/progress"-->
+        <!--android:layout_width="50dp"-->
+        <!--android:layout_height="50dp"-->
+        <!--app:TabtextColor="@color/black"-->
+        <!--app:TabtextSize="16dp"-->
+        <!--app:backColor="@color/lightgray"-->
+        <!--app:backWidth="3dp"-->
+        <!--app:progColor="@color/blue"-->
+        <!--app:progWidth="3dp"-->
+        <!--app:progress="0" />-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/kh_details_jd"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_status_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="18%"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:singleLine="true"
+                android:text="M_20201025-0005"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/tv_status_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="完成收款"
+                android:textColor="@color/black"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_create_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginBottom="6dp"
+                android:text="2020-10-14"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_final_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="￥299.00元"
+                android:textColor="#F9041E"
+                android:textSize="18dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/ghostwhite" />
+</LinearLayout>

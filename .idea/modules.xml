@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/crmCall-mashangyingxiao.iml" filepath="$PROJECT_DIR$/.idea/modules/crmCall-mashangyingxiao.iml" group="crmCall-mashangyingxiao" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/crmCall-mashangyingxiao.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/crmCall-mashangyingxiao.app.iml" group="crmCall-mashangyingxiao/app" />
+    </modules>
+  </component>
+</project>

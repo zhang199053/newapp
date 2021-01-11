@@ -1,0 +1,87 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    signingConfigs {
+        crm {
+            keyAlias 'crm'
+            keyPassword '123456'
+            storeFile file('android.keystore')
+            storePassword '123456'
+        }
+    }
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.ymz"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.1.1"
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            // 设置支持的SO库架构
+            abiFilters 'armeabi', 'armeabi', 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    productFlavors {
+    }
+}
+dependencies {
+    //    系统依赖
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:28.+'
+    implementation 'com.android.support.constraint:constraint-layout:2.0.1'
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.android.support:multidex:1.0.0'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    //android不同版本状态栏沉浸
+    compile 'com.githang:status-bar-compat:latest.integration'
+    //xutils的依赖
+    compile 'org.xutils:xutils:3.5.0'
+    compile 'com.android.support:design:28.+'
+//    compile 'com.jakewharton:butterknife:7.0.1'
+
+    //适配器
+    compile 'com.zhy:base-rvadapter:3.0.3'
+    //（针对RecyclerView）
+    compile 'com.zhy:base-adapter:3.0.3'
+    //(针对ListView)
+    implementation 'com.android.support:support-v4:28.+'
+    //    gson工具类
+    compile 'com.google.code.gson:gson:2.8.1'
+    //    apache工具类
+    compile 'org.apache.commons:commons-lang3:3.4'
+    //图片库
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.github.bumptech.glide:glide:3.6.1'
+    compile 'jp.wasabeef:glide-transformations:2.0.0'
+    //消息推送测试
+    compile 'org.fusesource.mqtt-client:mqtt-client:1.14'
+//    腾讯tbs
+    implementation files('libs/tbs_sdk_thirdapp_v4.3.0.3_43903_sharewithdownloadwithfile_withoutGame_obfs_20200402_121309.jar')
+//折线图
+    compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'
+    implementation 'com.github.GuangNian10000:MyChart:v2.1'
+//    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    //Android动态获取运行时权限RxPermissions
+    compile 'io.reactivex.rxjava2:rxjava:2.0.1'
+    compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
+
+    //下拉刷新依赖
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1'
+    compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.5.1'//没有使用特殊Header，可以不加这行
+    implementation 'com.jaeger.statusbarutil:library:1.5.1'
+    compile 'com.tencent.bugly:crashreport:latest.release'
+    //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.2.0
+    implementation 'me.codego:adapter:1.0.2@aar'
+    implementation 'com.lovedise:permissiongen:0.0.6'
+}
