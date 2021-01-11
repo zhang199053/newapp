@@ -74,7 +74,7 @@
                     android:layout_height="wrap_content"
                     android:visibility="gone" />
 
-                <com.ymz.ViewUtils.AbnormalView
+                <com.yh.ViewUtils.AbnormalView
                     android:id="@+id/av_nodata"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

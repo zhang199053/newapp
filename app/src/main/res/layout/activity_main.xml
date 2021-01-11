@@ -13,7 +13,7 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
     <!-- 底部选项卡区域 -->
-    <com.ymz.ViewUtils.FragmentTabHost
+    <com.yh.ViewUtils.FragmentTabHost
         android:id="@android:id/tabhost"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,5 +22,5 @@
             android:id="@android:id/tabcontent"
             android:layout_width="0dp"
             android:layout_height="0dp" />
-    </com.ymz.ViewUtils.FragmentTabHost>
+    </com.yh.ViewUtils.FragmentTabHost>
 </LinearLayout>
