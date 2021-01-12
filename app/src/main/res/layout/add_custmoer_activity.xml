@@ -9,7 +9,7 @@
     tools:context=".Model.Customer.AddCustomerActivity">
 
 
-    <com.ymz.ViewUtils.NavigationBar
+    <com.xsl.ViewUtils.NavigationBar
         android:id="@+id/nb_agre"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -36,7 +36,7 @@
                 android:scrollbars="none"
                 android:visibility="visible" />
 
-            <com.ymz.ViewUtils.AbnormalView
+            <com.xsl.ViewUtils.AbnormalView
                 android:id="@+id/av_nodata"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

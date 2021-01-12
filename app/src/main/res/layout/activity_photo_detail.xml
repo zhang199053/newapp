@@ -5,20 +5,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.ymz.ViewUtils.NavigationBar
+    <com.xsl.ViewUtils.NavigationBar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         app:title="头像" />
 
-    <com.ymz.ViewUtils.photoView.PullBackLayout
+    <com.xsl.ViewUtils.photoView.PullBackLayout
         android:id="@+id/pull_back_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
         android:layout_gravity="center">
 
-        <com.ymz.ViewUtils.photoView.PhotoView
+        <com.xsl.ViewUtils.photoView.PhotoView
             android:id="@+id/photo_touch_iv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -26,5 +26,5 @@
             android:layout_gravity="center"
             android:transitionName="@string/transition_photos" />
 
-    </com.ymz.ViewUtils.photoView.PullBackLayout>
+    </com.xsl.ViewUtils.photoView.PullBackLayout>
 </LinearLayout>
