@@ -75,6 +75,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
     private ImageView ll_exit;
     //    关于我们
     private LinearLayout ll_gywm;
+    private LinearLayout ll_statisticl;
     //头像
     private ImageView minefragment_iv_login;
     private TextView tv_name, tv_bm, tv_zw, tv_phone;
@@ -119,6 +120,9 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         ll_set_phone_psd.setOnClickListener(this);
         tv_ye = rootView.findViewById(R.id.tv_ye);
         tv_ye.setOnClickListener(this);
+        ll_statisticl = rootView.findViewById(R.id.ll_statistical);
+        ll_statisticl.setOnClickListener(this);
+
         ShowView();
     }
 

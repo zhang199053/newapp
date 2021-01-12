@@ -7,6 +7,16 @@
     android:orientation="vertical"
     android:paddingTop="40dp">
     <!--头部标题栏-->
+
+
+
+
+
+
+
+
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -43,6 +53,8 @@
     </RelativeLayout>
 
     <include layout="@layout/customer_tool_activity" />
+
+
 
 
     <RelativeLayout
