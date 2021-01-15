@@ -1,20 +1,39 @@
 package com.yh.Model.MakeCall;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
+import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.yh.App.App;
 import com.yh.App.BaseActivity;
+import com.yh.Entity.CallRemarkbean;
+import com.yh.Entity.CheckPermissionbean;
+import com.yh.Model.Customer.AddCustomerActivity;
 import com.yh.R;
+import com.yh.Utils.AppToast;
+import com.yh.Utils.HttpUtils.BaseCallback;
+import com.yh.Utils.HttpUtils.HttpClient;
+import com.yh.Utils.MyDialog;
 import com.yh.Utils.SharedPrefUtil;
 import com.yh.ViewUtils.NavigationBar;
+import com.yh.ViewUtils.ProgressDialogUtil;
 
+import org.xutils.common.Callback;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import static com.yh.Utils.UrlUtils.Url.DOMAIN_CallPermission;
+import static com.yh.Utils.UrlUtils.Url.DOMAIN_CallRemark;
 import static com.yh.Utils.UrlUtils.Url.dialpanel_phone;
 
 /**
@@ -31,6 +50,9 @@ public class MakeCallActivity extends BaseActivity {
     private String phone = "";
     private NavigationBar nb_agre;
     private View v_line;
+    private int customer_id;
+    private int callboo;
+    private Dialog dialog;
 
     @Override
     protected int getContentView() {
@@ -171,23 +193,163 @@ public class MakeCallActivity extends BaseActivity {
                     }
                 }
 
-//                调用拨打电话功能
-                String state = SharedPrefUtil.getInstance().getString(SharedPrefUtil.Login_Db_state, "1");
-                if (!state.equals("5")) {
-                    CallActivity.Call(this, mContext,  phone,"");
-                } else {
-                    Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phone));
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    //mContext.startActivity(intent);
-                    startActivity(intent);
-                }
-
+                //判断客户是否存在
+                checkPermissionHttp();
 
                 break;
             default:
                 break;
         }
     }
+
+
+    private void checkPermissionHttp() {
+        callboo = 0;
+        Map<String, Object> parame = new HashMap<>();
+        parame.put("phone", phone);
+        Log.e("http===/", DOMAIN_CallPermission + "==" + phone);
+        HttpClient.getInstance().post(this, DOMAIN_CallPermission, parame, new BaseCallback<CheckPermissionbean>(CheckPermissionbean.class) {
+            @Override
+            public void onSuccess(CheckPermissionbean result) {
+
+                if (result.getData().getIs_exist() == 1) {
+                    //     调用拨打电话功能
+                    String state = SharedPrefUtil.getInstance().getString(SharedPrefUtil.Login_Db_state, "1");
+                    Log.e("state====/", state);
+                    if (!state.equals("5")) {
+                        CallActivity.Call(MakeCallActivity.this, mContext, phone, "", 1);
+                    } else {
+                        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phone));
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        //mContext.startActivity(intent);
+                        startActivity(intent);
+                    }
+                    callboo = 1;
+                    customer_id = result.getData().getCustomer_id();
+                } else {
+                    // AppToast.showToast("此用户不存在");
+                    addInfoDialogs("此用户不存在");
+                }
+
+            }
+
+            @Override
+            public void onError(String msg) {
+                AppToast.showToast(msg);
+            }
+
+            @Override
+            public void onCancelled(Callback.CancelledException var1) {
+            }
+
+            @Override
+            public void onFinished() {
+                ProgressDialogUtil.getInstance().stopLoad();
+            }
+        });
+
+    }
+
+    private void callNotoDialogs(final int customer_id) {
+        dialog = MyDialog.SignDialogShow(this, R.layout.callnoto_lay, 1.0f);
+        final EditText contenttv = (EditText) dialog.findViewById(R.id.contenttv);
+        TextView tv_cancle = (TextView) dialog.findViewById(R.id.tv_cancle);
+        TextView tv_confirm = (TextView) dialog.findViewById(R.id.tv_confirm);
+
+        tv_cancle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        tv_confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //提交备注
+                //callContenthttp(contenttv.getText().toString(),customer_id);
+                callContenthttp(contenttv.getText().toString(), customer_id);
+            }
+        });
+
+        //设置点击屏幕不消失
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setCancelable(false);
+        dialog.show();
+    }
+
+    private void addInfoDialogs(String str) {
+        final Dialog dialog = MyDialog.SignDialogShow(this, R.layout.addinfo_iay, 1.0f);
+        final TextView msgtv = (TextView) dialog.findViewById(R.id.msgtv);
+        TextView tv_cancle = (TextView) dialog.findViewById(R.id.tv_cancle);
+        TextView tv_confirm = (TextView) dialog.findViewById(R.id.tv_confirm);
+        msgtv.setText(str);
+
+        tv_cancle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        tv_confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //提交备注
+                //callContenthttp(contenttv.getText().toString(),);
+                startActivity(new Intent(MakeCallActivity.this, AddCustomerActivity.class).putExtra("pho", phone));
+                dialog.dismiss();
+            }
+        });
+
+        //设置点击屏幕不消失
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setCancelable(false);
+        dialog.show();
+    }
+
+    private void callContenthttp(String str, int customer_id) {
+
+        Map<String, Object> parame = new HashMap<>();
+        parame.put("remark_info", str);
+        parame.put("token", App.getToken());
+        parame.put("customer_id", customer_id + "");
+
+        Log.e("http===/", DOMAIN_CallRemark + "==" + parame.toString());
+        HttpClient.getInstance().post(this, DOMAIN_CallRemark, parame, new BaseCallback<CallRemarkbean>(CallRemarkbean.class) {
+            @Override
+            public void onSuccess(CallRemarkbean result) {
+                AppToast.showToast(result.getInfo());
+                dialog.dismiss();
+
+            }
+
+            @Override
+            public void onError(String msg) {
+                AppToast.showToast(msg);
+            }
+
+            @Override
+            public void onCancelled(Callback.CancelledException var1) {
+            }
+
+            @Override
+            public void onFinished() {
+                ProgressDialogUtil.getInstance().stopLoad();
+            }
+        });
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (callboo == 1) {
+            callNotoDialogs(customer_id);
+            ev_phone.setText("");
+        }
+    }
+
 
     public void Call2x() {
 //        申请拨打权限
@@ -234,3 +396,5 @@ public class MakeCallActivity extends BaseActivity {
         }
     }
 }
+
+

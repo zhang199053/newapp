@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.yh.Main.MainActivity;
 import com.yh.Model.Login.LoginActivity;
+import com.yh.Utils.MyCatchException;
 import com.yh.Utils.SharedPrefUtil;
 
 import org.xutils.x;
@@ -68,6 +69,8 @@ public class App extends Application {
         super.onCreate();
         applicationContext = this;
         instance = this;
+        MyCatchException mException= MyCatchException.getInstance();
+        mException.init(getApplicationContext());  //注册
         //xutils初始化
         x.Ext.init(this);
         //xutils是否开启日志

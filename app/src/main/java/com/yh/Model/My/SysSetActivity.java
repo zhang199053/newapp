@@ -127,6 +127,7 @@ public class SysSetActivity extends BaseActivity implements View.OnClickListener
             HttpClient.getInstance().post(mContext, DOMAIN_PhoneSys, parame, new BaseCallback<PhoneSysEntity>(PhoneSysEntity.class) {
                 @Override
                 public void onSuccess(PhoneSysEntity result) {
+
                     if (result.getInfo().equals("Success")) {
                         bean = result.getData().getEcpinfo();
                     }
