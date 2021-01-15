@@ -214,6 +214,38 @@
                         android:background="@color/ghostwhite" />
 
                     <LinearLayout
+                        android:id="@+id/ll_statistical"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+
+                        android:layout_centerInParent="true">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            android:text="个人话务统计"
+                            android:textColor="#1A1A1A"
+                            android:textSize="14dp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:src="@mipmap/icon_mine_yjt" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5px"
+                        android:background="@color/ghostwhite" />
+
+
+
+
+                    <LinearLayout
                         android:id="@+id/ll_sys_set"
                         android:layout_width="match_parent"
 

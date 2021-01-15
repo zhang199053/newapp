@@ -65,6 +65,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
     private LinearLayout ll_head_information;
     //    通信配置
     private LinearLayout ll_sys_set;
+    private LinearLayout ll_statistical;
 
     //    修改密码
     private LinearLayout ll_updata_psd;
@@ -118,6 +119,8 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         ll_set_phone_psd.setOnClickListener(this);
         tv_ye = rootView.findViewById(R.id.tv_ye);
         tv_ye.setOnClickListener(this);
+        ll_statistical=rootView.findViewById(R.id.ll_statistical);
+        ll_statistical.setOnClickListener(this);
         ShowView();
     }
 
