@@ -137,6 +137,8 @@ public class MainActivity extends BaseActivity {
 
         //默认选中首页
         mTabHost.setCurrentTab(0);
+
+
     }
 
 

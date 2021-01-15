@@ -40,10 +40,13 @@ import static com.cyb.Utils.UrlUtils.Url.DOMAIN_updateCutomerField;
  */
 public class CallActivity {
     //拨打电话功能
-    public static void Call(Activity activity, Context context, String phone, String customer_id) {
+    public static void Call(Activity activity, Context context, String phone, String customer_id,int calltype) {
         String state = SharedPrefUtil.getInstance().getString(SharedPrefUtil.Login_Db_state, "1");
-//        更新拨打次数
-        updateCutomerField(context, customer_id);
+//        更新拨打次数  calltype  1不进行更新拨打次数
+        if (calltype!=1){
+            updateCutomerField(context, customer_id);
+        }
+        Log.e("state====/2",state);
         if (state.equals("1")) {
             AXBCall(activity, context, phone);
         }
@@ -62,7 +65,7 @@ public class CallActivity {
         }
 
         if (state.equals("6")) {
-            xslCall(context, phone);
+            xslCall(context, phone,calltype);
         }
 
     }
@@ -232,7 +235,7 @@ public class CallActivity {
         }
     }
 
-    public static void xslCall(final Context context, String phone) {
+    public static void xslCall(final Context context, String phone, final int calltype) {
         if (!TextUtils.isEmpty(phone) && !TextUtils.isEmpty(App.getToken())) {
             ProgressDialogUtil.getInstance().startLoad(context);
             Map<String, Object> parame = new HashMap<>();
@@ -251,11 +254,18 @@ public class CallActivity {
                             JSONObject json1 = new JSONObject(data);
                             String stel = json1.optString("x_tel");
                             if (!TextUtils.isEmpty(stel)) {
-                                dialpanel_phone = stel;
-                                App.startActivity(context, MakeCallActivity.class);
-//                                Intent intent2 = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + stel));
-//                                intent2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                                context.startActivity(intent2);
+                              //
+                                Log.e("dialpanel_phone==",dialpanel_phone+"////");
+                                if (calltype==1){
+                                    dialpanel_phone = "";
+                                Intent intent2 = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + stel));
+                                intent2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                context.startActivity(intent2);
+                                }else {
+
+                                    App.startActivity(context, MakeCallActivity.class);
+                                }
+
                             }
                         }
                     } catch (JSONException e) {

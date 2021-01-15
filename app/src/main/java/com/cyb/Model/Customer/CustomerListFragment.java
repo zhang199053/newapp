@@ -153,6 +153,7 @@ public class CustomerListFragment extends BaseFragment implements View.OnClickLi
                 break;
             case R.id.iv_bd:
 //                拨打电话页面
+                dialpanel_phone = "";
                 App.startActivity(mContext, MakeCallActivity.class);
                 break;
             case R.id.ll_px:
