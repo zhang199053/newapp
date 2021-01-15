@@ -3,18 +3,14 @@ package com.ymz.App;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.multidex.MultiDex;
 import android.text.TextUtils;
-
-
 import com.tencent.bugly.crashreport.CrashReport;
 import com.ymz.Main.MainActivity;
 import com.ymz.Model.Login.LoginActivity;
+import com.ymz.Utils.MyCatchException;
 import com.ymz.Utils.SharedPrefUtil;
-
 import org.xutils.x;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -68,6 +64,9 @@ public class App extends Application {
         super.onCreate();
         applicationContext = this;
         instance = this;
+        MyCatchException mException= MyCatchException.getInstance();
+        mException.init(getApplicationContext());  //注册
+
         //xutils初始化
         x.Ext.init(this);
         //xutils是否开启日志

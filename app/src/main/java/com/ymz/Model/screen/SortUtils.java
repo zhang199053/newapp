@@ -1,25 +1,22 @@
 package com.ymz.Model.screen;
-
 import android.content.Context;
 import android.text.TextUtils;
-
+import android.util.Log;
+import com.google.gson.Gson;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.ymz.App.App;
 import com.ymz.Entity.CustomerBean;
-import com.ymz.Model.Customer.SearchActivity;
 import com.ymz.Utils.AppToast;
 import com.ymz.Utils.HttpUtils.BaseCallback;
 import com.ymz.Utils.HttpUtils.HttpClient;
 import com.ymz.Utils.SelectValueUtils;
+import com.ymz.Utils.UrlUtils.Url;
 import com.ymz.ViewUtils.PopTop.ActionItem;
-
 import org.xutils.common.Callback;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import static com.ymz.Model.Customer.CustomerListFragment.ShowViews;
 import static com.ymz.Model.CustomerPool.CustomerPoolListFragment.ShowViews2;
 import static com.ymz.Utils.UrlUtils.Url.DOMAIN_Index;
@@ -60,10 +57,13 @@ public class SortUtils {
                     parame.put(list.get(i).getKey(), list.get(i).getValue());
                 }
             }
+            Log.d("json===//", "请求地址1:" + Url.DOMAIN_Index);
 
             HttpClient.getInstance().post(mContext, DOMAIN_Index, parame, new BaseCallback<CustomerBean>(CustomerBean.class) {
                 @Override
                 public void onSuccess(CustomerBean result) {
+                    String datas = new Gson().toJson(result);
+                    Log.e("json=====fragment1", datas);
                     if (result.getInfo().equals("success")) {
                         if (!srl_refresh.isLoading()) {
                             if (page == 1) {

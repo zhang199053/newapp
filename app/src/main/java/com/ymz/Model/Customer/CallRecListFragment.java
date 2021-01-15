@@ -39,20 +39,15 @@ import com.ymz.ViewUtils.NavigationBar;
 import com.ymz.ViewUtils.PopTop.ActionItem;
 import com.ymz.ViewUtils.PopTop.TablePopup;
 import com.ymz.ViewUtils.PopTop.TitlePopup;
-
 import org.xutils.common.Callback;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-
-import static com.ymz.Model.Customer.CustomerListFragment.ShowViews;
 import static com.ymz.Utils.UrlUtils.Url.DOMAIN_Index;
-
+import static com.ymz.Utils.UrlUtils.Url.dialpanel_phone;
 /**
  * Administrator  ：zhouyuru
  * 2020/9/28
@@ -164,6 +159,7 @@ public class CallRecListFragment extends BaseFragment implements View.OnClickLis
                 break;
             case R.id.iv_bd:
 //                拨打电话页面
+                dialpanel_phone = "";
                 App.startActivity(mContext, MakeCallActivity.class);
                 break;
             case R.id.ll_px:
