@@ -3,6 +3,7 @@ package com.yh.Adpter.Customer;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -30,9 +31,11 @@ public class CustomerAdaper extends BaseCommonAdapter<CustomerBean.Custome_list>
     //    拨打电话
     LinearLayout ll_call;
     Activity activity;
+    Context mContext;
 
     public CustomerAdaper(Context mContext, int id, List<CustomerBean.Custome_list> custome_lists, Activity activity) {
         super(mContext, id, custome_lists);
+        this.mContext=mContext;
         this.activity = activity;
     }
 
@@ -54,6 +57,34 @@ public class CustomerAdaper extends BaseCommonAdapter<CustomerBean.Custome_list>
         tv_xm = holder.itemView.findViewById(R.id.tv_xm);
         tv_xm.setText(bean.getIndustry());
         tv_fl = holder.itemView.findViewById(R.id.tv_fl);
+        //
+
+        if (bean.getCustomer_status().equals("未跟进")){
+            tv_fl.setBackgroundResource(R.drawable.button_submenu_5);
+            tv_fl.setTextColor(ContextCompat.getColor(mContext, R.color.huise));
+        }else  if (bean.getCustomer_status().equals("意向客户")){
+            tv_fl.setBackgroundResource(R.drawable.textlabel);
+            tv_fl.setTextColor(ContextCompat.getColor(mContext, R.color.white));
+        }else  if (bean.getCustomer_status().equals("重点客户")){
+            tv_fl.setBackgroundResource(R.drawable.textlabel2);
+            tv_fl.setTextColor(ContextCompat.getColor(mContext, R.color.white));
+        }else  if (bean.getCustomer_status().equals("未接通")){
+            tv_fl.setBackgroundResource(R.drawable.button_submenu_5);
+            tv_fl.setTextColor(ContextCompat.getColor(mContext, R.color.huise));
+        }else  if (bean.getCustomer_status().equals("意向不大")){
+            tv_fl.setBackgroundResource(R.drawable.button_submenu_5);
+            tv_fl.setTextColor(ContextCompat.getColor(mContext, R.color.huise));
+        }else  if (bean.getCustomer_status().equals("无效客户")){
+            tv_fl.setBackgroundResource(R.drawable.button_submenu_5);
+            tv_fl.setTextColor(ContextCompat.getColor(mContext, R.color.huise));
+        }else  if (bean.getCustomer_status().equals("已成交")){
+            tv_fl.setBackgroundResource(R.drawable.button_submenu_5);
+            tv_fl.setTextColor(ContextCompat.getColor(mContext, R.color.huise));
+        }else  if (bean.getCustomer_status().equals("考察未成交")){
+            tv_fl.setBackgroundResource(R.drawable.button_submenu_5);
+            tv_fl.setTextColor(ContextCompat.getColor(mContext, R.color.huise));
+        }
+
         tv_fl.setText(bean.getCustomer_status());
         tv_num = holder.itemView.findViewById(R.id.tv_num);
         tv_num.setText("拨打次数：" + bean.getDial_count());
@@ -70,7 +101,8 @@ public class CustomerAdaper extends BaseCommonAdapter<CustomerBean.Custome_list>
             @Override
             public void onClick(View v) {
                 Log.d("TEST", "拨号数据:" + bean.toString());
-                CallActivity.Call(activity, mContext, bean.getCrm_okpkzz(), bean.getCustomer_id());
+                dialpanel_phone = bean.getCrm_okpkzz();
+                CallActivity.Call(activity, mContext, bean.getCrm_okpkzz(), bean.getCustomer_id(),0);
             }
         });
     }

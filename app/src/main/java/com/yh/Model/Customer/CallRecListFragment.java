@@ -99,7 +99,6 @@ public class CallRecListFragment extends BaseFragment implements View.OnClickLis
     @Override
     protected int setContentView() {
         return R.layout.callrec_list_activity;
-
     }
 
     @Nullable

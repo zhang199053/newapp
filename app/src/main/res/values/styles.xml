@@ -61,4 +61,9 @@
         <item name="android:windowIsFloating">false</item>
         <item name="android:windowContentOverlay">@null</item>
     </style>
+
+    <style name="qiandao" mce_bogus="1" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/qiandaotanchu</item>
+        <item name="android:windowExitAnimation">@anim/qiandaotuichu</item>
+    </style>
 </resources>
