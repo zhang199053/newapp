@@ -13,7 +13,6 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -168,6 +167,11 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
             case R.id.ll_set_phone_psd:
 //                设置拨打电话
                 mContext.startActivity(new Intent(mContext, SetCallActivity.class));
+                break;
+
+            case R.id.ll_statistical:
+                startActivity(new Intent(mContext,StatisticalActivity.class));
+
                 break;
             default:
                 break;

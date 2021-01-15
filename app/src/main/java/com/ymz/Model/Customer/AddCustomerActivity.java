@@ -65,6 +65,7 @@ public class AddCustomerActivity extends BaseActivity implements View.OnClickLis
     private AddCustomerAdpter addCustomerAdpter;
     private ListView rv_list;
     AbnormalView av_nodata;
+    private String pho;
     private List<CustomerInput.Inputs> list = new ArrayList<>();
 
     @Override
@@ -80,7 +81,8 @@ public class AddCustomerActivity extends BaseActivity implements View.OnClickLis
         bt_add = findViewById(R.id.bt_add);
         bt_add.setOnClickListener(this);
         rv_list = findViewById(R.id.rv_list);
-        addCustomerAdpter = new AddCustomerAdpter(mContext, lists);
+        pho=getIntent().getStringExtra("pho");
+        addCustomerAdpter = new AddCustomerAdpter(mContext, lists,pho);
         rv_list.setAdapter(addCustomerAdpter);
         ShowInit();
     }

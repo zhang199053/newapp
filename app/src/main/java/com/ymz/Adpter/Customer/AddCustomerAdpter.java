@@ -33,9 +33,11 @@ public class AddCustomerAdpter extends BaseAdapter {
     private Context mContext;
     public  HashMap<Integer, String> hashMap = new HashMap<Integer, String>();
 
-    public AddCustomerAdpter(Context context, List<AddCustomerEntity.Customer_list> datas) {
+    private String phone="";
+    public AddCustomerAdpter(Context context, List<AddCustomerEntity.Customer_list> datas,String pho) {
         this.mContext = context;
         this.datas = datas;
+        phone=pho;
     }
 
     @Override
@@ -76,10 +78,18 @@ public class AddCustomerAdpter extends BaseAdapter {
         holder.tv_name.setText(bean.getName());
         //存tag值
         holder.rv_context.setTag(position);
+
+
 //        输入框
         if (bean.getSetting().size() == 0 && !bean.getForm_type().equals("datetime")) {
 //            字段名hint提示
-            holder.rv_context.setHint(bean.getInput_tips());
+            if (bean.getName().equals("电话")){
+            if (!TextUtils.isEmpty(phone)&&!phone.equals("")){
+                holder.rv_context.setText(phone);
+            }else {
+                holder.rv_context.setHint(bean.getInput_tips());
+            }
+            }
             holder.iv_zjt.setVisibility(View.GONE);
             if (bean.getForm_type().equals("text")) {
                 holder.rv_context.setInputType(InputType.TYPE_CLASS_TEXT);

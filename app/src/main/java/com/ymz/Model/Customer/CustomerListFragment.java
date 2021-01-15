@@ -42,6 +42,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import static com.xsl.Utils.UrlUtils.Url.dialpanel_phone;
+
 /**
  * Administrator  ：zhouyuru
  * 2020/9/28
@@ -153,6 +155,7 @@ public class CustomerListFragment extends BaseFragment implements View.OnClickLi
                 break;
             case R.id.iv_bd:
 //                拨打电话页面
+                dialpanel_phone = "";
                 App.startActivity(mContext, MakeCallActivity.class);
                 break;
             case R.id.ll_px:

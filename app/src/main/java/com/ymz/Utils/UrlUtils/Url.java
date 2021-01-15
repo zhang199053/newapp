@@ -32,6 +32,9 @@ public class Url {
     public static String DOMAIN_EditPassword = DOMAIN_NAME + "?m=user&a=editPassword";
     //客户数据
     public static String DOMAIN_Index = DOMAIN_NAME + "?m=customer&a=index";
+
+    //话务统计
+    public static String CALL_STATISTCAL ="?m=user&a=telcallTotalStatistics";
     /**
      * 录音列表
      */
@@ -66,6 +69,12 @@ public class Url {
     public static String DOMAIN_CallAXB = DOMAIN_NAME + "?m=call&a=axbCall";
     public static String dialpanel_phone = "";
 
+
+    //判断客户是否存在
+    public static String DOMAIN_CallPermission = DOMAIN_NAME + "?m=customer&a=customerIsexist";
+
+    //添加备注
+    public static String DOMAIN_CallRemark = DOMAIN_NAME + "?m=customer&a=addCustomerRemark";
     //新增客户字段
     public static String DOMAIN_Fields = DOMAIN_NAME + "?m=index&a=fields";
     //统计数据
@@ -129,6 +138,9 @@ public class Url {
         DOMAIN_CallAXB = DOMAIN_NAME + "?m=call&a=axbCall";
         DOMAIN_AXBCALLDJ = DOMAIN_NAME + "?m=call&a=axbCallDj";
 
+        DOMAIN_CallPermission= DOMAIN_NAME + "?m=customer&a=customerIsexist";
+        //添加客户备注
+        DOMAIN_CallRemark= DOMAIN_NAME + "?m=customer&a=addCustomerRemark";
         //新增客户字段
         DOMAIN_Fields = DOMAIN_NAME + "?m=index&a=fields";
         //统计数据

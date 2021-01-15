@@ -3,51 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.ymz">
     <!-- sd读写权限 -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <!-- 拨打电话权限 -->
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-    <!-- 装载卸载文件系统 -->
-    <uses-permission
-        android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
-        tools:ignore="ProtectedPermissions" />
-    <!-- 允许程序获取网络信息状态，如当前的网络连接是否有效 -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!-- 允许程序打开网络套接字 -->
-    <uses-permission android:name="android.permission.INTERNET" />
-    <!-- 允许程序读取底层系统日志文件 -->
-    <uses-permission
-        android:name="android.permission.READ_LOGS"
-        tools:ignore="ProtectedPermissions" />
-    <!-- 允许程序访问摄像头进行拍照 -->
-    <uses-permission android:name="android.permission.CAMERA" />
-    <!-- 静默安装，升级app使用 -->
-    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <!--申请悬浮窗权限-->
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
-    <!--修改手机状态-->
-    <uses-permission
-        android:name="android.permission.MODIFY_PHONE_STATE"
-        tools:ignore="ProtectedPermissions" />
-
-    <!--bugly需要-->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-
-    <uses-permission
-        android:name="android.permission.READ_LOGS"
-        tools:ignore="ProtectedPermissions" />
-
     <application
         android:name=".App.App"
         android:allowBackup="true"
@@ -57,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".Model.My.StatisticalActivity"></activity>
         <!-- 启动activity -->
         <activity
             android:name=".Main.MainActivity"
@@ -66,89 +22,100 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- 个人信息页面 -->
+        </activity> <!-- 个人信息页面 -->
         <activity
             android:name=".Model.My.PersonalDetailsActivity"
-            android:screenOrientation="unspecified" />
-        <!--&lt;!&ndash; 用户列表页面 &ndash;&gt;-->
-        <!--<activity-->
-        <!--android:name=".Model.Customer.CustomerListActivity"-->
-        <!--android:screenOrientation="portrait" />-->
+            android:screenOrientation="unspecified" /> <!-- &lt;!&ndash; 用户列表页面 &ndash;&gt; -->
+        <!-- <activity -->
+        <!-- android:name=".Model.Customer.CustomerListActivity" -->
+        <!-- android:screenOrientation="portrait" /> -->
         <!-- 新增用户页面 -->
         <activity
             android:name=".Model.Customer.AddCustomerActivity"
             android:screenOrientation="unspecified"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"
-
-            />
-        <!-- 用户详情页面 -->
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" /> <!-- 用户详情页面 -->
         <activity
             android:name=".Model.Customer.CustomerDetailsActivity"
-            android:screenOrientation="unspecified" />
-        <!-- 用户个人详情页面 -->
+            android:screenOrientation="unspecified" /> <!-- 用户个人详情页面 -->
         <activity
             android:name=".Model.Customer.CutomerInDicidualActivity"
-            android:screenOrientation="unspecified" />
-        <!-- 通信系统配置 -->
+            android:screenOrientation="unspecified" /> <!-- 通信系统配置 -->
         <activity
             android:name=".Model.My.SysSetActivity"
-            android:screenOrientation="unspecified" />
-        <!-- 修改密码 -->
+            android:screenOrientation="unspecified" /> <!-- 修改密码 -->
         <activity
             android:name=".Model.My.UpdatePsdActivity"
-            android:screenOrientation="unspecified" />
-        <!--&lt;!&ndash;&lt;!&ndash;登陆页面 &ndash;&gt;&ndash;&gt;-->
+            android:screenOrientation="unspecified" /> <!-- &lt;!&ndash;&lt;!&ndash;登陆页面 &ndash;&gt;&ndash;&gt; -->
         <activity
             android:name=".Model.Login.LoginActivity"
-            android:screenOrientation="unspecified" />
-
-        <!-- 客户池 -->
-        <!--<activity-->
-        <!--android:name=".Model.CustomerPool.CustomerPoolListActivity"-->
-        <!--android:screenOrientation="portrait" />-->
+            android:screenOrientation="unspecified" /> <!-- 客户池 -->
+        <!-- <activity -->
+        <!-- android:name=".Model.CustomerPool.CustomerPoolListActivity" -->
+        <!-- android:screenOrientation="portrait" /> -->
         <!-- 客户池聚合 -->
         <activity
             android:name=".Model.CustomerPool.CustomerPoolDetailsActivity"
-            android:screenOrientation="unspecified" />
-        <!--查看头像大图-->
+            android:screenOrientation="unspecified" /> <!-- 查看头像大图 -->
         <activity
             android:name=".Model.My.PhotoDetailActivity"
-            android:screenOrientation="unspecified" />
-        <!--搜索页面-->
+            android:screenOrientation="unspecified" /> <!-- 搜索页面 -->
         <activity
             android:name=".Model.Customer.SearchActivity"
-            android:screenOrientation="unspecified" />
-        <!--拨打电话-->
+            android:screenOrientation="unspecified" /> <!-- 拨打电话 -->
         <activity
             android:name=".Model.MakeCall.MakeCallActivity"
-            android:screenOrientation="unspecified" />
-        <!--添加跟进记录-->
+            android:screenOrientation="unspecified" /> <!-- 添加跟进记录 -->
         <activity
             android:name=".Model.Log.AddFollowLogActivity"
-            android:screenOrientation="unspecified" />
-        <!--关于我们-->
+            android:screenOrientation="unspecified" /> <!-- 关于我们 -->
         <activity
             android:name=".Model.My.About.AboutusActivity"
-            android:screenOrientation="unspecified" />
-        <!--服务条款-->
+            android:screenOrientation="unspecified" /> <!-- 服务条款 -->
         <activity
             android:name=".Model.My.About.TermsOfServiceActivity"
-            android:screenOrientation="unspecified" />
-        <!--隐私政策-->
+            android:screenOrientation="unspecified" /> <!-- 隐私政策 -->
         <activity
             android:name=".Model.My.About.PrivacyPolicyActivity"
-            android:screenOrientation="unspecified" />
-        <!--隐私政策-->
+            android:screenOrientation="unspecified" /> <!-- 隐私政策 -->
         <activity
             android:name=".Model.Customer.EditCustomerActivity"
             android:screenOrientation="unspecified"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
-        <!--设置拨打电话方式-->
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" /> <!-- 设置拨打电话方式 -->
         <activity
             android:name=".Model.My.SetCallActivity"
             android:screenOrientation="unspecified" />
     </application>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 拨打电话权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 装载卸载文件系统 -->
+    <uses-permission android:name="android.permission.CALL_PHONE" /> <!-- 允许程序获取网络信息状态，如当前的网络连接是否有效 -->
+    <uses-permission
+        android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+        tools:ignore="ProtectedPermissions" /> <!-- 允许程序打开网络套接字 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 允许程序读取底层系统日志文件 -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 允许程序访问摄像头进行拍照 -->
+    <uses-permission
+        android:name="android.permission.READ_LOGS"
+        tools:ignore="ProtectedPermissions" /> <!-- 静默安装，升级app使用 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 申请悬浮窗权限 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- 修改手机状态 -->
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" /> <!-- bugly需要 -->
+    <uses-permission
+        android:name="android.permission.MODIFY_PHONE_STATE"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <uses-permission
+        android:name="android.permission.READ_LOGS"
+        tools:ignore="ProtectedPermissions" />
 
 </manifest>
