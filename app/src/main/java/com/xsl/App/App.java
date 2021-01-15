@@ -3,14 +3,13 @@ package com.xsl.App;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.multidex.MultiDex;
 import android.text.TextUtils;
 
 
 import com.tencent.bugly.crashreport.CrashReport;
-import com.xsl.Main.MainActivity;
 import com.xsl.Model.Login.LoginActivity;
+import com.xsl.Utils.MyCatchException;
 import com.xsl.Utils.SharedPrefUtil;
 
 import org.xutils.x;
@@ -68,6 +67,9 @@ public class App extends Application {
         super.onCreate();
         applicationContext = this;
         instance = this;
+        MyCatchException mException= MyCatchException.getInstance();
+        mException.init(getApplicationContext());  //注册
+
         //xutils初始化
         x.Ext.init(this);
         //xutils是否开启日志

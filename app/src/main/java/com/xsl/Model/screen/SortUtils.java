@@ -2,7 +2,9 @@ package com.xsl.Model.screen;
 
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Log;
 
+import com.google.gson.Gson;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.xsl.App.App;
 import com.xsl.Entity.CustomerBean;
@@ -11,6 +13,7 @@ import com.xsl.Utils.AppToast;
 import com.xsl.Utils.HttpUtils.BaseCallback;
 import com.xsl.Utils.HttpUtils.HttpClient;
 import com.xsl.Utils.SelectValueUtils;
+import com.xsl.Utils.UrlUtils.Url;
 import com.xsl.ViewUtils.PopTop.ActionItem;
 
 import org.xutils.common.Callback;
@@ -60,10 +63,13 @@ public class SortUtils {
                     parame.put(list.get(i).getKey(), list.get(i).getValue());
                 }
             }
+            Log.d("json===//", "请求地址1:" + Url.DOMAIN_Index);
 
             HttpClient.getInstance().post(mContext, DOMAIN_Index, parame, new BaseCallback<CustomerBean>(CustomerBean.class) {
                 @Override
                 public void onSuccess(CustomerBean result) {
+                    String datas = new Gson().toJson(result);
+                    Log.e("json=====fragment1", datas);
                     if (result.getInfo().equals("success")) {
                         if (!srl_refresh.isLoading()) {
                             if (page == 1) {

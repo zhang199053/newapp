@@ -142,7 +142,7 @@ public class CustomerDetailsActivity extends BaseActivity implements View.OnClic
                 break;
             case R.id.ll_customer_details:
                 String phone = customerDetailAdpter.phone;
-                CallActivity.Call(this, mContext, phone, customer_id);
+                CallActivity.Call(this, mContext, phone, customer_id,0);
                 break;
             default:
                 break;

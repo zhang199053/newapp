@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="12dp"
-    android:background="@color/white"
+    android:background="@drawable/button_white_5"
+    android:paddingRight="8dp"
+    android:paddingLeft="8dp"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -38,7 +40,7 @@
                     android:singleLine="true"
                     android:text=""
                     android:textColor="@color/sys_qs"
-                    android:textSize="17sp" />
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -51,20 +53,20 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="项目名称："
+                    android:text="拨打次数："
                     android:textColor="@color/huise"
-                    android:textSize="14sp" />
+                    android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/tv_xm"
+                    android:id="@+id/tv_number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="70dp"
                     android:ellipsize="end"
                     android:singleLine="true"
                     android:text=""
-                    android:textColor="#ff333333"
-                    android:textSize="14sp" />
+                    android:textColor="@color/huise"
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -73,23 +75,23 @@
                 android:layout_marginBottom="4dp">
 
                 <TextView
+                    android:id="@+id/tv_pass"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="客户分类："
+                    android:text="接通率："
                     android:textColor="@color/huise"
-                    android:textSize="14sp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/tv_fl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="70dp"
-                    android:padding="2dp"
                     android:ellipsize="end"
                     android:singleLine="true"
                     android:text=""
                     android:textColor="#ff333333"
-                    android:textSize="13sp" />
+                    android:textSize="12sp" />
             </LinearLayout>
 
 
@@ -104,18 +106,23 @@
             android:gravity="center_vertical"
             android:orientation="vertical">
 
-            <ImageView
+            <TextView
+                android:id="@+id/tv_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
                 android:layout_gravity="right"
                 android:layout_marginBottom="12dp"
-                android:src="@mipmap/icon_kh_list_phone" />
+                android:textSize="11sp"
+                android:text=""
+                />
 
             <TextView
                 android:id="@+id/tv_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="拨打次数：1"
+                android:layout_gravity="right"
+                android:text="接通总数："
                 android:textColor="@color/huise"
                 android:textSize="12sp" />
             <LinearLayout
@@ -126,26 +133,22 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="tel："
+                    android:text="平均接通时长(分)："
                     android:textColor="@color/huise"
-                    android:textSize="14sp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/tv_tel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="70dp"
                     android:ellipsize="end"
                     android:singleLine="true"
                     android:text=""
-                    android:textColor="#ff333333"
-                    android:textSize="14sp" />
+                    android:textColor="@color/huise"
+                    android:textSize="12sp" />
             </LinearLayout>
 
         </LinearLayout>
     </RelativeLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5px"
-        android:background="@color/line_huise" />
+
 </LinearLayout>

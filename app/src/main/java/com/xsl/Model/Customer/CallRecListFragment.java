@@ -52,6 +52,7 @@ import java.util.Set;
 
 import static com.xsl.Model.Customer.CustomerListFragment.ShowViews;
 import static com.xsl.Utils.UrlUtils.Url.DOMAIN_Index;
+import static com.xsl.Utils.UrlUtils.Url.dialpanel_phone;
 
 /**
  * Administrator  ：zhouyuru
@@ -163,6 +164,7 @@ public class CallRecListFragment extends BaseFragment implements View.OnClickLis
                 break;
             case R.id.iv_bd:
 //                拨打电话页面
+                dialpanel_phone = "";
                 App.startActivity(mContext, MakeCallActivity.class);
                 break;
             case R.id.ll_px:
