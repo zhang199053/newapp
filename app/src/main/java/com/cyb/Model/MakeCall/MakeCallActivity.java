@@ -1,5 +1,4 @@
 package com.cyb.Model.MakeCall;
-
 import android.Manifest;
 import android.app.Dialog;
 import android.content.Intent;
@@ -31,12 +30,10 @@ import com.cyb.ViewUtils.ProgressDialogUtil;
 import static com.cyb.Utils.UrlUtils.Url.DOMAIN_CallPermission;
 import static com.cyb.Utils.UrlUtils.Url.DOMAIN_CallRemark;
 import static com.cyb.Utils.UrlUtils.Url.dialpanel_phone;
-
 import org.xutils.common.Callback;
 
 import java.util.HashMap;
 import java.util.Map;
-
 /**
  * Administrator  ：zhouyuru
  * 2020/10/22
@@ -54,7 +51,6 @@ public class MakeCallActivity extends BaseActivity {
     private int customer_id;
     private int callboo;
     private Dialog dialog;
-
     @Override
     protected int getContentView() {
         return R.layout.make_call_activity;
@@ -219,35 +215,33 @@ public class MakeCallActivity extends BaseActivity {
 
 
     private void checkPermissionHttp() {
-        callboo = 0;
+        callboo=0;
         Map<String, Object> parame = new HashMap<>();
         parame.put("phone", phone);
-        parame.put("token", App.getToken());
-        Log.e("http===/", DOMAIN_CallPermission + "==" + phone);
+        Log.e("http===/",DOMAIN_CallPermission+"=="+phone);
         HttpClient.getInstance().post(this, DOMAIN_CallPermission, parame, new BaseCallback<CheckPermissionbean>(CheckPermissionbean.class) {
             @Override
             public void onSuccess(CheckPermissionbean result) {
 
                 String datas = new Gson().toJson(result);
                 Log.e("json=====make", datas);
-                if (result.getData().getIs_exist() == 1) {
-                    //     调用拨打电话功能
+                if (result.getData().getIs_exist()==1){
+                   //     调用拨打电话功能
                     String state = SharedPrefUtil.getInstance().getString(SharedPrefUtil.Login_Db_state, "1");
-                    Log.e("state====/", state);
+                    Log.e("state====/",state);
                     if (!state.equals("5")) {
-                        CallActivity.Call(MakeCallActivity.this, mContext, phone, "", 1);
+                        CallActivity.Call(MakeCallActivity.this, mContext,  phone,"",1);
                     } else {
                         Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phone));
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         //mContext.startActivity(intent);
                         startActivity(intent);
                     }
-                    callboo = 1;
-                    customer_id = result.getData().getCustomer_id();
-                } else {
-                    // AppToast.showToast("此用户不存在");
+                    callboo=1;
+                    customer_id=result.getData().getCustomer_id();
+                }else {
+                    AppToast.showToast("此用户不存在");
                     //addInfoDialogs("此用户不存在");
-                    startActivity(new Intent(MakeCallActivity.this, AddCustomerActivity.class).putExtra("pho", phone));
                 }
 
             }
@@ -270,7 +264,7 @@ public class MakeCallActivity extends BaseActivity {
     }
 
     private void callNotoDialogs(final int customer_id) {
-        dialog = MyDialog.SignDialogShow(this, R.layout.callnoto_lay, 1.0f);
+         dialog = MyDialog.SignDialogShow(this, R.layout.callnoto_lay, 1.0f);
         final EditText contenttv = (EditText) dialog.findViewById(R.id.contenttv);
         TextView tv_cancle = (TextView) dialog.findViewById(R.id.tv_cancle);
         TextView tv_confirm = (TextView) dialog.findViewById(R.id.tv_confirm);
@@ -286,8 +280,8 @@ public class MakeCallActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 //提交备注
-                //callContenthttp(contenttv.getText().toString(),customer_id);
-                callContenthttp(contenttv.getText().toString(), customer_id);
+              //callContenthttp(contenttv.getText().toString(),customer_id);
+                callContenthttp(contenttv.getText().toString(),customer_id);
             }
         });
 
@@ -316,7 +310,7 @@ public class MakeCallActivity extends BaseActivity {
             public void onClick(View v) {
                 //提交备注
                 //callContenthttp(contenttv.getText().toString(),);
-                startActivity(new Intent(MakeCallActivity.this, AddCustomerActivity.class).putExtra("pho", phone));
+                startActivity(new Intent(MakeCallActivity.this, AddCustomerActivity.class).putExtra("pho",phone));
                 dialog.dismiss();
             }
         });
@@ -327,14 +321,14 @@ public class MakeCallActivity extends BaseActivity {
         dialog.show();
     }
 
-    private void callContenthttp(String str, int customer_id) {
+    private void callContenthttp(String str,int customer_id) {
 
         Map<String, Object> parame = new HashMap<>();
         parame.put("remark_info", str);
         parame.put("token", App.getToken());
-        parame.put("customer_id", customer_id + "");
+        parame.put("customer_id", customer_id+"");
 
-        Log.e("http===/", DOMAIN_CallRemark + "==" + parame.toString());
+        Log.e("http===/",DOMAIN_CallRemark+"=="+parame.toString());
         HttpClient.getInstance().post(this, DOMAIN_CallRemark, parame, new BaseCallback<CallRemarkbean>(CallRemarkbean.class) {
             @Override
             public void onSuccess(CallRemarkbean result) {
@@ -363,11 +357,12 @@ public class MakeCallActivity extends BaseActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if (callboo == 1) {
-            //   callNotoDialogs(customer_id);
+        if (callboo==1){
+         //   callNotoDialogs(customer_id);
             ev_phone.setText("");
         }
     }
+
 
 
     public void Call2x() {
