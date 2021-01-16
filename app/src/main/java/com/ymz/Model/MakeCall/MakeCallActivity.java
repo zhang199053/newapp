@@ -228,7 +228,8 @@ public class MakeCallActivity extends BaseActivity {
                     customer_id=result.getData().getCustomer_id();
                 }else {
                    // AppToast.showToast("此用户不存在");
-                    addInfoDialogs("此用户不存在");
+                    //addInfoDialogs("此用户不存在");
+                    startActivity(new Intent(MakeCallActivity.this, AddCustomerActivity.class).putExtra("pho",phone));
                 }
 
             }
