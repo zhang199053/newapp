@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.ymz.App.App;
 import com.ymz.App.BaseActivity;
 import com.ymz.Entity.CallRemarkbean;
@@ -208,6 +209,8 @@ public class MakeCallActivity extends BaseActivity {
             @Override
             public void onSuccess(CheckPermissionbean result) {
 
+                String datas = new Gson().toJson(result);
+                Log.e("json=====make", datas);
                 if (result.getData().getIs_exist()==1){
                    //     调用拨打电话功能
                     String state = SharedPrefUtil.getInstance().getString(SharedPrefUtil.Login_Db_state, "1");

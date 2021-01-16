@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.content.ContextCompat;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -59,33 +60,37 @@ public class CustomerAdaper extends BaseCommonAdapter<CustomerBean.Custome_list>
         tv_fl = holder.itemView.findViewById(R.id.tv_fl);
         //
 
-        if (bean.getCustomer_status().equals("未跟进")){
-            tv_fl.setBackgroundResource(R.drawable.button_submenu_5);
-            tv_fl.setTextColor(ContextCompat.getColor(mContext, R.color.huise));
-        }else  if (bean.getCustomer_status().equals("意向客户")){
-            tv_fl.setBackgroundResource(R.drawable.textlabel);
-            tv_fl.setTextColor(ContextCompat.getColor(mContext, R.color.white));
-        }else  if (bean.getCustomer_status().equals("重点客户")){
-            tv_fl.setBackgroundResource(R.drawable.textlabel2);
-            tv_fl.setTextColor(ContextCompat.getColor(mContext, R.color.white));
-        }else  if (bean.getCustomer_status().equals("未接通")){
-            tv_fl.setBackgroundResource(R.drawable.button_submenu_5);
-            tv_fl.setTextColor(ContextCompat.getColor(mContext, R.color.huise));
-        }else  if (bean.getCustomer_status().equals("意向不大")){
-            tv_fl.setBackgroundResource(R.drawable.button_submenu_5);
-            tv_fl.setTextColor(ContextCompat.getColor(mContext, R.color.huise));
-        }else  if (bean.getCustomer_status().equals("无效客户")){
-            tv_fl.setBackgroundResource(R.drawable.button_submenu_5);
-            tv_fl.setTextColor(ContextCompat.getColor(mContext, R.color.huise));
-        }else  if (bean.getCustomer_status().equals("已成交")){
-            tv_fl.setBackgroundResource(R.drawable.button_submenu_5);
-            tv_fl.setTextColor(ContextCompat.getColor(mContext, R.color.huise));
-        }else  if (bean.getCustomer_status().equals("考察未成交")){
-            tv_fl.setBackgroundResource(R.drawable.button_submenu_5);
-            tv_fl.setTextColor(ContextCompat.getColor(mContext, R.color.huise));
+        if (!TextUtils.isEmpty(bean.getCustomer_status())){
+            if (bean.getCustomer_status().equals("未跟进")){
+                tv_fl.setBackgroundResource(R.drawable.button_submenu_5);
+                tv_fl.setTextColor(ContextCompat.getColor(mContext, R.color.huise));
+            }else  if (bean.getCustomer_status().equals("意向客户")){
+                tv_fl.setBackgroundResource(R.drawable.textlabel);
+                tv_fl.setTextColor(ContextCompat.getColor(mContext, R.color.white));
+            }else  if (bean.getCustomer_status().equals("重点客户")){
+                tv_fl.setBackgroundResource(R.drawable.textlabel2);
+                tv_fl.setTextColor(ContextCompat.getColor(mContext, R.color.white));
+            }else  if (bean.getCustomer_status().equals("未接通")){
+                tv_fl.setBackgroundResource(R.drawable.button_submenu_5);
+                tv_fl.setTextColor(ContextCompat.getColor(mContext, R.color.huise));
+            }else  if (bean.getCustomer_status().equals("意向不大")){
+                tv_fl.setBackgroundResource(R.drawable.button_submenu_5);
+                tv_fl.setTextColor(ContextCompat.getColor(mContext, R.color.huise));
+            }else  if (bean.getCustomer_status().equals("无效客户")){
+                tv_fl.setBackgroundResource(R.drawable.button_submenu_5);
+                tv_fl.setTextColor(ContextCompat.getColor(mContext, R.color.huise));
+            }else  if (bean.getCustomer_status().equals("已成交")){
+                tv_fl.setBackgroundResource(R.drawable.button_submenu_5);
+                tv_fl.setTextColor(ContextCompat.getColor(mContext, R.color.huise));
+            }else  if (bean.getCustomer_status().equals("考察未成交")){
+                tv_fl.setBackgroundResource(R.drawable.button_submenu_5);
+                tv_fl.setTextColor(ContextCompat.getColor(mContext, R.color.huise));
+            }
+
+            tv_fl.setText(bean.getCustomer_status());
         }
 
-        tv_fl.setText(bean.getCustomer_status());
+
         tv_num = holder.itemView.findViewById(R.id.tv_num);
         tv_num.setText("拨打次数：" + bean.getDial_count());
         ll_call = holder.itemView.findViewById(R.id.ll_call);
