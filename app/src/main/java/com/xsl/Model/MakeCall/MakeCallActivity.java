@@ -206,7 +206,8 @@ public class MakeCallActivity extends BaseActivity {
         callboo=0;
         Map<String, Object> parame = new HashMap<>();
         parame.put("phone", phone);
-        Log.e("http===/",DOMAIN_CallPermission+"=="+phone);
+        parame.put("token", App.getToken());
+        Log.e("http===/",parame.toString()+"=="+phone);
         HttpClient.getInstance().post(this, DOMAIN_CallPermission, parame, new BaseCallback<CheckPermissionbean>(CheckPermissionbean.class) {
             @Override
             public void onSuccess(CheckPermissionbean result) {
