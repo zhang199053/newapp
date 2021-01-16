@@ -56,7 +56,7 @@ public class CustomerDetailAdpter extends BaseCommonAdapter<CustomerDetailsTwoBe
                 tv_fzr.setText(data.getVal());
             }
         }
-        tv_fzr.setText(data.getVal());
+       // tv_fzr.setText(data.getVal());
 
 
         if (data.getField().equals("name")) {

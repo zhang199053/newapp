@@ -227,8 +227,9 @@ public class MakeCallActivity extends BaseActivity {
                     callboo=1;
                     customer_id=result.getData().getCustomer_id();
                 }else {
-                   // AppToast.showToast("此用户不存在");
-                    addInfoDialogs("此用户不存在");
+                 //   addInfoDialogs("此用户不存在");
+                    startActivity(new Intent(MakeCallActivity.this, AddCustomerActivity.class).putExtra("pho",phone));
+
                 }
 
             }
@@ -298,6 +299,7 @@ public class MakeCallActivity extends BaseActivity {
                 //提交备注
                 //callContenthttp(contenttv.getText().toString(),);
                 startActivity(new Intent(MakeCallActivity.this, AddCustomerActivity.class).putExtra("pho",phone));
+
                 dialog.dismiss();
             }
         });
