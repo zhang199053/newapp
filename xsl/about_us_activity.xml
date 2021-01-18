@@ -101,7 +101,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="公司名称：羊毛猪网络科技（上海）有限公司"
+                    android:text="公司名称：安徽乐炫网络科技有限公司"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
@@ -126,7 +126,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="羊毛猪网络科技(上海)有限公司成立于2015年05月28日，经营范围包括网络科技领域内的技术开发、技术咨询、技术服务、技术转让，设计、制作广告，利用自有媒体发布各类广告，文化艺术活动交流策划，企业形象策划，市场营销策划，会展会务服务，商务信息咨询(除经纪)。"
+                    android:text="安徽乐炫网络科技有限公司(上海)有限公司成立于2015年05月28日，经营范围包括网络科技领域内的技术开发、技术咨询、技术服务、技术转让，设计、制作广告，利用自有媒体发布各类广告，文化艺术活动交流策划，企业形象策划，市场营销策划，会展会务服务，商务信息咨询(除经纪)。"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:visibility="visible" />

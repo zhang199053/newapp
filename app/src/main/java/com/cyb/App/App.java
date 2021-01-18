@@ -8,6 +8,7 @@ import android.support.multidex.MultiDex;
 import android.text.TextUtils;
 
 
+import com.cyb.Utils.MyCatchException;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.cyb.Main.MainActivity;
 import com.cyb.Model.Login.LoginActivity;
@@ -68,6 +69,8 @@ public class App extends Application {
         super.onCreate();
         applicationContext = this;
         instance = this;
+        MyCatchException mException= MyCatchException.getInstance();
+        mException.init(getApplicationContext());  //注册
         //xutils初始化
         x.Ext.init(this);
         //xutils是否开启日志

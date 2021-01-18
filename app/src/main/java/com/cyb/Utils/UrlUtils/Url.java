@@ -34,7 +34,7 @@ public class Url {
     public static String DOMAIN_Index = DOMAIN_NAME + "?m=customer&a=index";
 
     //话务统计
-    public static String CALL_STATISTCAL ="?m=user&a=telcallTotalStatistics";
+    public static String CALL_STATISTCAL ="?m=customer&a=telcallTotalStatistics";
     /**
      * 录音列表
      */

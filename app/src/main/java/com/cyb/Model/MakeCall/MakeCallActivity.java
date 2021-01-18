@@ -195,7 +195,21 @@ public class MakeCallActivity extends BaseActivity {
                 }
 
                 //判断客户是否存在
-                checkPermissionHttp();
+               // checkPermissionHttp();
+
+                //     调用拨打电话功能
+                String state = SharedPrefUtil.getInstance().getString(SharedPrefUtil.Login_Db_state, "1");
+                Log.e("state====/",state);
+                if (!state.equals("5")) {
+                    CallActivity.Call(MakeCallActivity.this, mContext,  phone,"",1);
+                } else {
+                    Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phone));
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    //mContext.startActivity(intent);
+                    startActivity(intent);
+                }
+               callboo=1;
+//                customer_id=result.getData().getCustomer_id();
 
                 break;
             default:
