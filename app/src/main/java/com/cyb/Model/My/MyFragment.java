@@ -66,6 +66,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
     private LinearLayout ll_head_information;
     //    通信配置
     private LinearLayout ll_sys_set;
+    private LinearLayout ll_statistical;
 
     //    修改密码
     private LinearLayout ll_updata_psd;
