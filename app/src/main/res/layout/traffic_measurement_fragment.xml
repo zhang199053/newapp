@@ -42,7 +42,8 @@
 
     </RelativeLayout>
 
-    <include layout="@layout/customer_tool_activity" />
+    <include layout="@layout/customer_tool_activity"
+        />
 
     <!--通话记录-->
     <RelativeLayout

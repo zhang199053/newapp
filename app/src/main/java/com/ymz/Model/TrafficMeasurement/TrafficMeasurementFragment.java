@@ -1,7 +1,9 @@
 package com.ymz.Model.TrafficMeasurement;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -19,6 +21,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.rcw.popuplib.FixPopupWindow;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
@@ -26,6 +29,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.ymz.Adpter.CustomerPool.CustomerPoolAdaper;
 import com.ymz.Adpter.Other.CalJuAdapter;
+import com.ymz.Adpter.Other.SortListAdapter;
 import com.ymz.App.App;
 import com.ymz.App.BaseFragment;
 import com.ymz.Entity.ConversationEntity;
@@ -72,6 +76,15 @@ public class TrafficMeasurementFragment extends BaseFragment implements View.OnC
     private AbnormalView av_nodata;
     //    拨号盘
     private ImageView iv_bd;
+    int mScreenWidth, mScreenHeight;
+    WindowManager wm;
+    private LinearLayout lay,ll_px;
+    private View contentView;
+    LinearLayout layout;
+    LinearLayout.LayoutParams params;
+    FixPopupWindow mFixPopupWindow;
+    private String sortstr;
+
     @Override
     protected int setContentView() {
         return R.layout.traffic_measurement_fragment;
@@ -87,13 +100,20 @@ public class TrafficMeasurementFragment extends BaseFragment implements View.OnC
     }
     @Override
     protected void init() {
+        wm = (WindowManager) getActivity().getSystemService(Context.WINDOW_SERVICE);
+        //获取屏幕的宽和高
+        mScreenWidth = wm.getDefaultDisplay().getWidth();
+        mScreenHeight = wm.getDefaultDisplay().getHeight();
         srl_refresh = rootView.findViewById(R.id.srl_refresh);
         rv_list = rootView.findViewById(R.id.rv_list);
         av_nodata = rootView.findViewById(R.id.av_nodata);
+        lay=rootView.findViewById(R.id.lay);
         iv_bd = rootView.findViewById(R.id.iv_bd);
         iv_bd.setOnClickListener(this);
+        ll_px=rootView.findViewById(R.id.ll_px);
+        ll_px.setOnClickListener(this);
 
-        initData(p);
+        initData(p,"asc");
 
         mAdpter = new CalJuAdapter(mContext,datas);
         rv_list.setLayoutManager(new LinearLayoutManager(mContext));
@@ -104,7 +124,7 @@ public class TrafficMeasurementFragment extends BaseFragment implements View.OnC
             public void onRefresh(RefreshLayout refreshlayout) {
                 datas.clear();
                 p = 1;
-                initData(p);
+                initData(p,sortstr);
                 srl_refresh.finishRefresh();
             }
         });
@@ -118,7 +138,7 @@ public class TrafficMeasurementFragment extends BaseFragment implements View.OnC
                     return;
                 }
                 p =p+ 1;
-                initData(p);
+                initData(p,sortstr);
                 srl_refresh.finishLoadMore();
 
             }
@@ -129,14 +149,15 @@ public class TrafficMeasurementFragment extends BaseFragment implements View.OnC
 
     }
     //加载数据
-    private void initData(int mPage) {
+    private void initData(int mPage,String ordertype ) {
         if (!TextUtils.isEmpty(App.getToken())) {
             Map<String, Object> parame = new HashMap<>();
             parame.put("token", App.getToken());
             parame.put("page", mPage);
             parame.put("pagelimit", "20");
-            parame.put("start_time", "2020-11-17 00:00:00");
-            parame.put("end_time", "2021-1-15 24:00:00");
+            parame.put("start_time", "");
+            parame.put("end_time", "");
+            parame.put("order",ordertype);
             Log.e("json=====fstatiss/////", parame.toString());
             HttpClient.getInstance().post(mContext, DOMAIN_allTelRecordDetail, parame, new BaseCallback<ConversationEntity>(ConversationEntity.class) {
                 @Override
@@ -184,11 +205,89 @@ public class TrafficMeasurementFragment extends BaseFragment implements View.OnC
 //                拨打电话页面
                 App.startActivity(mContext, MakeCallActivity.class);
                 break;
-            default:
+            case R.id.ll_px:
+                SortPopwindow();
                 break;
         }
     }
 
 
+    private void SortPopwindow() {
+        contentView = LayoutInflater.from(getActivity()).inflate(
+                R.layout.sort_pop, null);
+        RecyclerView reclerview1 = contentView.findViewById(R.id.reclerview1);
+
+
+        List<String>pList=new ArrayList<>();
+        pList.add("时间正序");
+        pList.add("时间倒序");
+        SortListAdapter sortadapter = new SortListAdapter(getActivity(), pList);
+        reclerview1.setLayoutManager(new LinearLayoutManager(App.getAppContext()));
+        reclerview1.setAdapter(sortadapter);
+
+
+
+        sortadapter.setOnItemClickListener(getActivity(), new SortListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(String str) {
+                //只有一级分类，调接口关闭弹窗
+                p=1;
+                if (str.equals("时间正序")){
+                    sortstr="asc";
+
+                }else   if (sortstr.equals("时间倒序")){
+                    sortstr="desc";
+                }
+                initData(p,sortstr);
+                mFixPopupWindow.dismiss();
+            }
+
+
+        });
+
+        layout = new LinearLayout(getActivity());
+        wm = (WindowManager) getActivity().getSystemService(Context.WINDOW_SERVICE);
+        //获取屏幕的宽和高
+        mScreenWidth = wm.getDefaultDisplay().getWidth();
+        mScreenHeight = wm.getDefaultDisplay().getHeight();
+        //  params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, (int) (mScreenHeight * 0.3));
+        params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        initPopupView(contentView);
+    }
+
+
+    public void initPopupView(View view) {
+        view.setLayoutParams(params);
+        layout.addView(view);
+        //设置背景色，不设置的话在有些机型会不显示popupWindow
+        layout.setBackgroundColor(Color.argb(60, 0, 0, 0));
+        //自定义的FixPopupWindow，解决在Build.VERSION.SDK_INT >= 24时，popupWindow显示位置在屏幕顶部问题
+        Log.e("height==", mScreenHeight + "");
+        mFixPopupWindow = new FixPopupWindow(layout, mScreenWidth, mScreenHeight);
+        mFixPopupWindow.setFocusable(true);
+        mFixPopupWindow.setBackgroundDrawable(new BitmapDrawable());
+        //设置点击popupWindow外部可消失
+        mFixPopupWindow.setOutsideTouchable(true);
+        //      mFixPopupWindow.setOnDismissListener(this);
+        layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mFixPopupWindow.dismiss();
+            }
+        });
+
+        mFixPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+
+            @Override
+            public void onDismiss() {
+                Log.e("pop===", "1");
+                init();
+
+            }
+        });
+        //           }
+        //设置点击popupButton时的状态
+        mFixPopupWindow.showAsDropDown(lay);
+    }
 
 }
