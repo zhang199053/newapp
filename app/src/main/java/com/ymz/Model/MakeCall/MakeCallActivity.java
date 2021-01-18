@@ -346,7 +346,7 @@ public class MakeCallActivity extends BaseActivity {
     protected void onStart() {
         super.onStart();
         if (callboo==1){
-            callNotoDialogs(customer_id);
+         //   callNotoDialogs(customer_id);
             ev_phone.setText("");
         }
     }

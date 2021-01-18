@@ -79,7 +79,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="销三郎小号平台"
+                android:text="马上营销小号平台"
                 android:textColor="#ff1a1a1a"
                 android:textSize="15sp" />
 
