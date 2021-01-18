@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/crmCall-mashangyingxiao.iml" filepath="$PROJECT_DIR$/.idea/modules/crmCall-mashangyingxiao.iml" group="crmCall-mashangyingxiao" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/crmCall-mashangyingxiao.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/crmCall-mashangyingxiao.app.iml" group="crmCall-mashangyingxiao/app" />
+      <module fileurl="file://$PROJECT_DIR$/popuplib/popuplib.iml" filepath="$PROJECT_DIR$/popuplib/popuplib.iml" group="crmCall-mashangyingxiao/popuplib" />
     </modules>
   </component>
 </project>
