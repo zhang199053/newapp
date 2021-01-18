@@ -36,25 +36,6 @@ import com.ymz.Utils.HttpUtils.BaseCallback;
 import com.ymz.Utils.HttpUtils.HttpClient;
 import com.ymz.Utils.SharedPrefUtil;
 import com.ymz.ViewUtils.FragmentTabHost;
-import com.ymz.ViewUtils.ProgressDialogUtil;
-
-import org.fusesource.hawtbuf.Buffer;
-import org.fusesource.hawtbuf.UTF8Buffer;
-import org.fusesource.mqtt.client.Callback;
-import org.fusesource.mqtt.client.CallbackConnection;
-import org.fusesource.mqtt.client.ExtendedListener;
-import org.fusesource.mqtt.client.MQTT;
-import org.fusesource.mqtt.client.QoS;
-import org.fusesource.mqtt.client.Topic;
-
-import java.net.URISyntaxException;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Map;
-
-import kr.co.namee.permissiongen.PermissionGen;
-
-import static com.ymz.Utils.UrlUtils.Url.DOMAIN_getSystemBalance;
 
 //主页面
 public class MainActivity extends BaseActivity {

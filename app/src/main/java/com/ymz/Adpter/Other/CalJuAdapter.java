@@ -1,6 +1,7 @@
 package com.ymz.Adpter.Other;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import com.ymz.Entity.ConversationEntity;
 import com.ymz.Entity.Statisticalbean;
 import com.ymz.R;
+import com.ymz.Utils.HideDataUtil;
 
 import java.util.List;
 
@@ -60,12 +62,16 @@ public class CalJuAdapter extends RecyclerView.Adapter<CalJuAdapter.MyViewHolder
         holder.tv_time.setText(lists.get(position).getCreated_time());
         holder.tv_number.setText(lists.get(position).getRealname());
         holder.tv_tel.setText(lists.get(position).getDuration()+"秒");
-        holder.tv_num.setText("电话号码："+lists.get(position).getDestination_number());
+       // holder.tv_num.setText("电话号码："+lists.get(position).getDestination_number());
         holder.addertv.setText("录音地址:"+lists.get(position).getFile_path());
         if (lists.get(position).getIs_connected().equals("0")){
             holder.tv_pass.setText("通话状态：未接通");
         }else {
             holder.tv_pass.setText("通话状态：接通");
+        }
+
+        if (!TextUtils.isEmpty(lists.get(position).getDestination_number())){
+            holder.tv_num.setText("电话号码："+HideDataUtil.bankCardReplaceWithStar(lists.get(position).getDestination_number()));
         }
 }
 
