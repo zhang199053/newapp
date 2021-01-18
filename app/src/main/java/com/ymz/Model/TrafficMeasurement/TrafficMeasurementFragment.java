@@ -113,7 +113,7 @@ public class TrafficMeasurementFragment extends BaseFragment implements View.OnC
         ll_px=rootView.findViewById(R.id.ll_px);
         ll_px.setOnClickListener(this);
 
-        initData(p,"asc");
+        initData(p,"desc");
 
         mAdpter = new CalJuAdapter(mContext,datas);
         rv_list.setLayoutManager(new LinearLayoutManager(mContext));
@@ -235,9 +235,10 @@ public class TrafficMeasurementFragment extends BaseFragment implements View.OnC
                 if (str.equals("时间正序")){
                     sortstr="asc";
 
-                }else   if (sortstr.equals("时间倒序")){
+                }else   if (str.equals("时间倒序")){
                     sortstr="desc";
                 }
+                datas.clear();
                 initData(p,sortstr);
                 mFixPopupWindow.dismiss();
             }
