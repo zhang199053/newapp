@@ -34,6 +34,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.xsl.Adpter.CustomerPool.CustomerPoolAdaper;
 import com.xsl.Adpter.Other.CalJuAdapter;
+import com.xsl.Adpter.Other.SortListAdapter;
 import com.xsl.App.App;
 import com.xsl.App.BaseFragment;
 import com.xsl.Entity.ConversationEntity;

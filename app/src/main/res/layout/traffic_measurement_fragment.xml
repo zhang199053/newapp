@@ -40,6 +40,93 @@
             android:src="@mipmap/icon_kh_add"
             android:visibility="gone" />
 
+        <RelativeLayout
+            android:visibility="gone"
+            android:layout_toRightOf="@+id/iv_search"
+            android:id="@+id/searchRay"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="12dp"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+
+            <RelativeLayout
+
+                android:id="@+id/search"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_toLeftOf="@+id/search_ray"
+                android:background="@drawable/button_submenu"
+                android:focusable="true"
+                android:focusableInTouchMode="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+
+                    >
+
+                    <ImageView
+                        android:id="@+id/shouye_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:src="@mipmap/icon_kh_ss" />
+
+                    <EditText
+                        android:id="@+id/content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/dp_5"
+                        android:layout_toLeftOf="@+id/shanchu_image"
+                        android:layout_toRightOf="@+id/shouye_image"
+                        android:background="@null"
+                        android:gravity="center_vertical"
+                        android:hint="请输入手机号"
+                        android:imeOptions="actionSearch"
+                        android:singleLine="true"
+                        android:textColor="@color/huise"
+                        android:textSize="12sp" />
+
+
+                    <ImageView
+                        android:id="@+id/shanchu_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/dp_5"
+                        android:layout_marginRight="@dimen/dp_5"
+                        android:visibility="gone"
+
+                        />
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/search_ray"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="取消"
+                    android:textSize="14sp" />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+
     </RelativeLayout>
 
 
@@ -76,9 +163,9 @@
                     android:id="@+id/rv_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                     />
+                    />
 
-                <com.ymz.ViewUtils.AbnormalView
+                <com.xsl.ViewUtils.AbnormalView
                     android:id="@+id/av_nodata"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
