@@ -1,4 +1,4 @@
-//package com.ymz.Model.Customer;
+//package com.cyb.Model.Customer;
 //
 //import android.content.Context;
 //import android.content.Intent;
@@ -23,22 +23,22 @@
 //import com.scwang.smartrefresh.layout.api.RefreshLayout;
 //import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 //import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
-//import com.ymz.Adpter.Customer.CustomerAdaper;
-//import com.ymz.App.App;
-//import com.ymz.App.BaseFragment;
-//import com.ymz.Entity.CustomerBean;
-//import com.ymz.Model.MakeCall.MakeCallActivity;
-//import com.ymz.Model.screen.SortUtils;
-//import com.ymz.R;
-//import com.ymz.Utils.AppToast;
-//import com.ymz.Utils.HttpUtils.BaseCallback;
-//import com.ymz.Utils.HttpUtils.HttpClient;
-//import com.ymz.Utils.SelectValueUtils;
-//import com.ymz.ViewUtils.AbnormalView;
-//import com.ymz.ViewUtils.NavigationBar;
-//import com.ymz.ViewUtils.PopTop.ActionItem;
-//import com.ymz.ViewUtils.PopTop.TablePopup;
-//import com.ymz.ViewUtils.PopTop.TitlePopup;
+//import com.cyb.Adpter.Customer.CustomerAdaper;
+//import com.cyb.App.App;
+//import com.cyb.App.BaseFragment;
+//import com.cyb.Entity.CustomerBean;
+//import com.cyb.Model.MakeCall.MakeCallActivity;
+//import com.cyb.Model.screen.SortUtils;
+//import com.cyb.R;
+//import com.cyb.Utils.AppToast;
+//import com.cyb.Utils.HttpUtils.BaseCallback;
+//import com.cyb.Utils.HttpUtils.HttpClient;
+//import com.cyb.Utils.SelectValueUtils;
+//import com.cyb.ViewUtils.AbnormalView;
+//import com.cyb.ViewUtils.NavigationBar;
+//import com.cyb.ViewUtils.PopTop.ActionItem;
+//import com.cyb.ViewUtils.PopTop.TablePopup;
+//import com.cyb.ViewUtils.PopTop.TitlePopup;
 //import org.xutils.common.Callback;
 //import java.util.ArrayList;
 //import java.util.HashMap;
@@ -46,8 +46,8 @@
 //import java.util.Iterator;
 //import java.util.List;
 //import java.util.Map;
-//import static com.ymz.Utils.UrlUtils.Url.DOMAIN_Index;
-//import static com.ymz.Utils.UrlUtils.Url.dialpanel_phone;
+//import static com.cyb.Utils.UrlUtils.Url.DOMAIN_Index;
+//import static com.cyb.Utils.UrlUtils.Url.dialpanel_phone;
 ///**
 // * Administrator  ：zhouyuru
 // * 2020/9/28

@@ -1,9 +1,9 @@
-//package com.ymz.Adpter.TrafficMeasurement;
+//package com.cyb.Adpter.TrafficMeasurement;
 //
 //import android.content.Context;
 //
-//import com.ymz.Adpter.AdpterUtils.BaseCommonAdapter;
-//import com.ymz.Entity.ConversationEntity;
+//import com.cyb.Adpter.AdpterUtils.BaseCommonAdapter;
+//import com.cyb.Entity.ConversationEntity;
 //import com.zhy.adapter.recyclerview.base.ViewHolder;
 //
 //import java.util.List;
