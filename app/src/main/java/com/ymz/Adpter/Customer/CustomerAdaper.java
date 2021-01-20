@@ -16,6 +16,7 @@ import com.ymz.Entity.CustomerBean;
 import com.ymz.Model.Customer.CustomerDetailsActivity;
 import com.ymz.Model.MakeCall.CallActivity;
 import com.ymz.R;
+import com.ymz.Utils.HideDataUtil;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import java.util.List;
@@ -47,8 +48,16 @@ public class CustomerAdaper extends BaseCommonAdapter<CustomerBean.Custome_list>
         tv_tel = holder.itemView.findViewById(R.id.tv_tel);
         try {
             if (bean.getCrm_okpkzz().length() == 11) {
-                String tt = bean.getCrm_okpkzz().substring(0, 3) + "****" + bean.getCrm_okpkzz().substring(8);
-                tv_tel.setText(tt);
+                Log.e("srcret==",App.getSecret()+"///");
+
+                if (App.getSecret().equals("0")){
+                    tv_tel.setText(bean.getCrm_okpkzz());
+                }else if (App.getSecret().equals("1")){
+                    String tt = HideDataUtil.bankCardReplaceWithStar(bean.getCrm_okpkzz());
+                    tv_tel.setText(tt);
+                }
+
+
             } else {
                 tv_tel.setText(bean.getCrm_okpkzz());
             }

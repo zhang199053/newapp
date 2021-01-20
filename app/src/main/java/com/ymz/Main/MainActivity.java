@@ -1,40 +1,19 @@
 package com.ymz.Main;
-//crmpass1 jks
-
-import android.Manifest;
-import android.app.NotificationManager;
-import android.content.Context;
-import android.os.Build;
-import android.support.v4.app.NotificationCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
-
-import com.ymz.App.App;
 import com.ymz.App.BaseActivity;
-import com.ymz.Dialog.CurrencyDialog;
-import com.ymz.Entity.SystemBalanceEntity;
-import com.ymz.Model.Crm.CrmFragment;
 import com.ymz.Model.Customer.CustomerListFragment;
 import com.ymz.Model.CustomerPool.CustomerPoolListFragment;
-import com.ymz.Model.Message.MessageFragment;
 import com.ymz.Model.My.MyFragment;
 import com.ymz.Model.Statistics.StatisticsFragment;
 import com.ymz.Model.TrafficMeasurement.TrafficMeasurementFragment;
-import com.ymz.Model.audio.AudioFragment;
 import com.ymz.R;
 import com.ymz.Utils.AppToast;
-import com.ymz.Utils.HttpUtils.BaseCallback;
-import com.ymz.Utils.HttpUtils.HttpClient;
-import com.ymz.Utils.SharedPrefUtil;
 import com.ymz.ViewUtils.FragmentTabHost;
 
 //主页面
@@ -47,7 +26,6 @@ public class MainActivity extends BaseActivity {
     private int[] itemStyles = new int[]{R.drawable.maintab_item_ico1_style, R.drawable.maintab_item_ico2_style, R.drawable.maintab_item_ico2_style, R.drawable.maintab_item_ico3_style, R.drawable.maintab_item_ico4_style};
     //    退出时间
     private long exitTime = 0;
-    private String balance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,8 +93,6 @@ public class MainActivity extends BaseActivity {
 
         //默认选中首页
         mTabHost.setCurrentTab(0);
-
-
     }
 
 

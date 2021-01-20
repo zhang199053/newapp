@@ -35,6 +35,15 @@ public class LoginEntity {
     private String system_name;
     private String info;
     private int status;
+    private String is_app_secret;
+
+    public String getIs_app_secret() {
+        return is_app_secret;
+    }
+
+    public void setIs_app_secret(String is_app_secret) {
+        this.is_app_secret = is_app_secret;
+    }
 
     public String getImg() {
         return img;

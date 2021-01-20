@@ -6,18 +6,23 @@ import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -75,7 +80,10 @@ public class TrafficMeasurementFragment extends BaseFragment implements View.OnC
     //    缺失图
     private AbnormalView av_nodata;
     //    拨号盘
-    private ImageView iv_bd;
+    private RelativeLayout searchRay,search_ray;
+    private ImageView iv_bd,iv_search;
+    private EditText content;
+    private TextView title;
     int mScreenWidth, mScreenHeight;
     WindowManager wm;
     private LinearLayout lay,ll_px;
@@ -83,7 +91,9 @@ public class TrafficMeasurementFragment extends BaseFragment implements View.OnC
     LinearLayout layout;
     LinearLayout.LayoutParams params;
     FixPopupWindow mFixPopupWindow;
-    private String sortstr;
+    private String sortstr,editstr;
+    private Handler handler = new Handler();
+
 
     @Override
     protected int setContentView() {
@@ -112,8 +122,18 @@ public class TrafficMeasurementFragment extends BaseFragment implements View.OnC
         iv_bd.setOnClickListener(this);
         ll_px=rootView.findViewById(R.id.ll_px);
         ll_px.setOnClickListener(this);
+        iv_search=rootView.findViewById(R.id.iv_search);
+        iv_search.setOnClickListener(this);
+        searchRay=rootView.findViewById(R.id.searchRay);
+        search_ray=rootView.findViewById(R.id.search_ray);
+        search_ray.setOnClickListener(this);
+        content=rootView.findViewById(R.id.content);
+        content.addTextChangedListener(textWatcher);
+        title=rootView.findViewById(R.id.title);
+        title.setText("通话记录");
 
-        initData(p,"desc");
+
+        initData(p,"desc","");
 
         mAdpter = new CalJuAdapter(mContext,datas);
         rv_list.setLayoutManager(new LinearLayoutManager(mContext));
@@ -124,7 +144,7 @@ public class TrafficMeasurementFragment extends BaseFragment implements View.OnC
             public void onRefresh(RefreshLayout refreshlayout) {
                 datas.clear();
                 p = 1;
-                initData(p,sortstr);
+                initData(p,sortstr,"");
                 srl_refresh.finishRefresh();
             }
         });
@@ -138,7 +158,7 @@ public class TrafficMeasurementFragment extends BaseFragment implements View.OnC
                     return;
                 }
                 p =p+ 1;
-                initData(p,sortstr);
+                initData(p,sortstr,"");
                 srl_refresh.finishLoadMore();
 
             }
@@ -149,7 +169,7 @@ public class TrafficMeasurementFragment extends BaseFragment implements View.OnC
 
     }
     //加载数据
-    private void initData(int mPage,String ordertype ) {
+    private void initData(int mPage,String ordertype ,String pho) {
         if (!TextUtils.isEmpty(App.getToken())) {
             Map<String, Object> parame = new HashMap<>();
             parame.put("token", App.getToken());
@@ -158,6 +178,9 @@ public class TrafficMeasurementFragment extends BaseFragment implements View.OnC
             parame.put("start_time", "");
             parame.put("end_time", "");
             parame.put("order",ordertype);
+            if (!TextUtils.isEmpty(pho)){
+                parame.put("customerName",pho);
+            }
             Log.e("json=====fstatiss/////", parame.toString());
             HttpClient.getInstance().post(mContext, DOMAIN_allTelRecordDetail, parame, new BaseCallback<ConversationEntity>(ConversationEntity.class) {
                 @Override
@@ -208,6 +231,24 @@ public class TrafficMeasurementFragment extends BaseFragment implements View.OnC
             case R.id.ll_px:
                 SortPopwindow();
                 break;
+            case R.id.iv_search:
+                searchRay.setVisibility(View.VISIBLE);
+                iv_search.setVisibility(View.GONE);
+
+                break;
+            case R.id.search_ray:
+                searchRay.setVisibility(View.GONE);
+                iv_search.setVisibility(View.VISIBLE);
+
+                if (TextUtils.isEmpty(editstr)||editstr.equals("")){
+                    return;
+                }else {
+                    p=1;
+                    datas.clear();
+                    initData(p,sortstr,"");
+                }
+
+                break;
         }
     }
 
@@ -239,7 +280,7 @@ public class TrafficMeasurementFragment extends BaseFragment implements View.OnC
                     sortstr="desc";
                 }
                 datas.clear();
-                initData(p,sortstr);
+                initData(p,sortstr,"");
                 mFixPopupWindow.dismiss();
             }
 
@@ -290,5 +331,48 @@ public class TrafficMeasurementFragment extends BaseFragment implements View.OnC
         //设置点击popupButton时的状态
         mFixPopupWindow.showAsDropDown(lay);
     }
+
+
+
+    private TextWatcher textWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+            editstr = editable.toString();
+            if (delayRun != null) {
+                //每次editText有变化的时候，则移除上次发出的延迟线程
+                handler.removeCallbacks(delayRun);
+            }
+            //延迟500ms，如果不再输入字符，则执行该线程的run方法
+            handler.postDelayed(delayRun, 200);
+        }
+    };
+
+
+    private Runnable delayRun = new Runnable() {
+        @Override
+        public void run() {
+            //在这里调用服务器的接口，获取数据
+            if (editstr == null||editstr.equals("") ) {
+                p=1;
+                datas.clear();
+                initData(p,sortstr,"");
+                return;
+            }
+            p=1;
+            datas.clear();
+            initData(p,sortstr,editstr);
+        }
+    };
+
 
 }

@@ -7,6 +7,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ymz.Adpter.AdpterUtils.BaseCommonAdapter;
+import com.ymz.App.App;
 import com.ymz.Entity.CustomerDetailsTwoBean;
 import com.ymz.R;
 import com.ymz.Utils.HideDataUtil;
@@ -49,8 +50,12 @@ public class CustomerDetailAdpter extends BaseCommonAdapter<CustomerDetailsTwoBe
         if (!TextUtils.isEmpty(data.getName())){
             if (data.getName().equals("电话")){
                 if (!TextUtils.isEmpty(data.getVal())){
-                  String pho= HideDataUtil.bankCardReplaceWithStar(data.getVal());
-                    tv_fzr.setText(pho);
+                    if (App.getSecret().equals("0")){
+                        tv_fzr.setText(data.getVal());
+                    }else if (App.getSecret().equals("1")){
+                        String pho= HideDataUtil.bankCardReplaceWithStar(data.getVal());
+                        tv_fzr.setText(pho);
+                    }
                 }
             }else {
                 tv_fzr.setText(data.getVal());

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.ymz.App.App;
 import com.ymz.Entity.ConversationEntity;
 import com.ymz.Entity.Statisticalbean;
 import com.ymz.R;
@@ -57,8 +58,9 @@ public class CalJuAdapter extends RecyclerView.Adapter<CalJuAdapter.MyViewHolder
 //                mItemClickListener.onItemClick(position);
 //            }
 //        });
-
-        holder.tv_name.setText(lists.get(position).getName());
+        if (!TextUtils.isEmpty(lists.get(position).getName())) {
+            holder.tv_name.setText(lists.get(position).getName());
+        }
         holder.tv_time.setText(lists.get(position).getCreated_time());
         holder.tv_number.setText(lists.get(position).getRealname());
         holder.tv_tel.setText(lists.get(position).getDuration()+"秒");
@@ -71,7 +73,13 @@ public class CalJuAdapter extends RecyclerView.Adapter<CalJuAdapter.MyViewHolder
         }
 
         if (!TextUtils.isEmpty(lists.get(position).getDestination_number())){
-            holder.tv_num.setText("电话号码："+HideDataUtil.bankCardReplaceWithStar(lists.get(position).getDestination_number()));
+            if (App.getSecret().equals("0")){
+                holder.tv_num.setText("电话号码："+lists.get(position).getDestination_number());
+
+            }else if (App.getSecret().equals("1")){
+                holder.tv_num.setText("电话号码："+HideDataUtil.bankCardReplaceWithStar(lists.get(position).getDestination_number()));
+
+            }
         }
 }
 
