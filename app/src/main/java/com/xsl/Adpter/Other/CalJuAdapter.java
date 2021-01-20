@@ -1,5 +1,4 @@
 package com.xsl.Adpter.Other;
-
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -8,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.xsl.App.App;
 import com.xsl.Entity.ConversationEntity;
+import com.xsl.Entity.Statisticalbean;
 import com.xsl.R;
 import com.xsl.Utils.HideDataUtil;
 
@@ -20,8 +21,8 @@ public class CalJuAdapter extends RecyclerView.Adapter<CalJuAdapter.MyViewHolder
     private List<ConversationEntity.DataBeanX.DataBean> lists;
 
 
-    private OnItemClickListener mItemClickListener;
 
+    private OnItemClickListener mItemClickListener;
     public void setOnItemClickListener(Context context, OnItemClickListener itemClickListener) {
         this.context = context;
         this.mItemClickListener = itemClickListener;
@@ -61,19 +62,25 @@ public class CalJuAdapter extends RecyclerView.Adapter<CalJuAdapter.MyViewHolder
         holder.tv_name.setText(lists.get(position).getName());
         holder.tv_time.setText(lists.get(position).getCreated_time());
         holder.tv_number.setText(lists.get(position).getRealname());
-        holder.tv_tel.setText(lists.get(position).getDuration() + "秒");
-        // holder.tv_num.setText("电话号码："+lists.get(position).getDestination_number());
-        holder.addertv.setText("录音地址:" + lists.get(position).getFile_path());
-        if (lists.get(position).getIs_connected().equals("0")) {
+        holder.tv_tel.setText(lists.get(position).getDuration()+"秒");
+       // holder.tv_num.setText("电话号码："+lists.get(position).getDestination_number());
+        holder.addertv.setText("录音地址:"+lists.get(position).getFile_path());
+        if (lists.get(position).getIs_connected().equals("0")){
             holder.tv_pass.setText("通话状态：未接通");
-        } else {
+        }else {
             holder.tv_pass.setText("通话状态：接通");
         }
 
-        if (!TextUtils.isEmpty(lists.get(position).getDestination_number())) {
-            holder.tv_num.setText("电话号码：" + HideDataUtil.bankCardReplaceWithStar(lists.get(position).getDestination_number()));
+        if (!TextUtils.isEmpty(lists.get(position).getDestination_number())){
+            if (App.getSecret().equals("0")){
+                holder.tv_num.setText("电话号码："+lists.get(position).getDestination_number());
+
+            }else if (App.getSecret().equals("1")){
+                holder.tv_num.setText("电话号码："+HideDataUtil.bankCardReplaceWithStar(lists.get(position).getDestination_number()));
+
+            }
         }
-    }
+}
 
     @Override
     public int getItemCount() {
@@ -82,8 +89,7 @@ public class CalJuAdapter extends RecyclerView.Adapter<CalJuAdapter.MyViewHolder
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        private TextView tv_name, tv_time, tv_num, tv_tel, tv_pass, tv_number, addertv;
-
+        private TextView tv_name,tv_time,tv_num,tv_tel,tv_pass,tv_number,addertv;
         public MyViewHolder(View view) {
             super(view);
             tv_name = (TextView) view.findViewById(R.id.tv_name);
@@ -99,4 +105,3 @@ public class CalJuAdapter extends RecyclerView.Adapter<CalJuAdapter.MyViewHolder
 
 
 }
-

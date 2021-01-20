@@ -42,7 +42,11 @@
 
     </RelativeLayout>
 
-    <include layout="@layout/customer_tool_activity" />
+
+
+
+    <include layout="@layout/customer_tool_activity"
+        />
 
     <!--通话记录-->
     <RelativeLayout
@@ -74,7 +78,7 @@
                     android:layout_height="wrap_content"
                      />
 
-                <com.xsl.ViewUtils.AbnormalView
+                <com.ymz.ViewUtils.AbnormalView
                     android:id="@+id/av_nodata"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

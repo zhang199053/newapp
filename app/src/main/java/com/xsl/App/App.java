@@ -171,6 +171,15 @@ public class App extends Application {
         return SharedPrefUtil.getInstance().getString(SharedPrefUtil.USER_token);
     }
 
+
+    /**
+     * 获取手机号是否脱敏
+     *
+     * @return
+     */
+    public static String getSecret() {
+        return SharedPrefUtil.getInstance().getString(SharedPrefUtil.User_pho_secret);
+    }
     /**
      * 获取当前用户角色id
      *

@@ -60,12 +60,12 @@ import static com.xsl.Utils.UrlUtils.Url.DOMAIN_getSystemBalance;
 
 //主页面
 public class MainActivity extends BaseActivity {
-    private String mTextviewArray[] = {"客户", "我的录音", "通话记录", "公海", "统计", "我的"};
+    private String mTextviewArray[] = {"客户", "通话记录", "公海", "统计", "我的"};
     private FragmentTabHost mTabHost;
     private LayoutInflater layoutInflater;
     //  可更具自己的需求是否创建多个fragment
-    private Class mFragmentArray[] = {CustomerListFragment.class, AudioFragment.class, TrafficMeasurementFragment.class, CustomerPoolListFragment.class, StatisticsFragment.class, MyFragment.class};
-    private int[] itemStyles = new int[]{R.drawable.maintab_item_ico1_style, R.drawable.maintab_item_ico1_style, R.drawable.maintab_item_ico2_style, R.drawable.maintab_item_ico2_style, R.drawable.maintab_item_ico3_style, R.drawable.maintab_item_ico4_style};
+    private Class mFragmentArray[] = {CustomerListFragment.class,  TrafficMeasurementFragment.class, CustomerPoolListFragment.class, StatisticsFragment.class, MyFragment.class};
+    private int[] itemStyles = new int[]{R.drawable.maintab_item_ico1_style, R.drawable.maintab_item_ico2_style, R.drawable.maintab_item_ico2_style, R.drawable.maintab_item_ico3_style, R.drawable.maintab_item_ico4_style};
     //    退出时间
     private long exitTime = 0;
     private String balance;
