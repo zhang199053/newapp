@@ -66,7 +66,6 @@ public class MainActivity extends BaseActivity {
     private int[] itemStyles = new int[]{R.drawable.maintab_item_ico1_style, R.drawable.maintab_item_ico2_style, R.drawable.maintab_item_ico2_style, R.drawable.maintab_item_ico3_style, R.drawable.maintab_item_ico4_style};
     //    退出时间
     private long exitTime = 0;
-    private String balance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
