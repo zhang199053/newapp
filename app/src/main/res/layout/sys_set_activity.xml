@@ -7,7 +7,7 @@
     android:orientation="vertical">
     <!--头部标题栏-->
 
-    <com.xsl.ViewUtils.NavigationBar
+    <com.yh.ViewUtils.NavigationBar
         android:id="@+id/nb_agre"
         android:layout_width="match_parent"
         android:layout_height="50dp"

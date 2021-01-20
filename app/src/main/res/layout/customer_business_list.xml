@@ -13,7 +13,7 @@
         android:orientation="horizontal"
         android:paddingLeft="16dp"
         android:paddingRight="16dp">
-        <!--<com.xsl.ViewUtils.CustomCircleProgressBar-->
+        <!--<com.yh.ViewUtils.CustomCircleProgressBar-->
         <!--android:id="@+id/am_progressbar_two"-->
         <!--android:layout_width="50dp"-->
         <!--android:layout_height="50dp"-->
@@ -24,7 +24,7 @@
         <!--app:progress_text_color="@color/black"-->
         <!--app:progress_width="2dp"-->
         <!--app:progrezz="50" />-->
-        <!--<com.xsl.ViewUtils.CircularProgressView-->
+        <!--<com.yh.ViewUtils.CircularProgressView-->
         <!--android:id="@+id/progress"-->
         <!--android:layout_width="50dp"-->
         <!--android:layout_height="50dp"-->
