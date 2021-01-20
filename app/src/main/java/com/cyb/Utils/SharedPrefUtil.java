@@ -71,7 +71,10 @@ public class SharedPrefUtil {
      * 保存登陆名字
      */
     public static final String User_system_name = BuildConfig.APPLICATION_ID + "system_name";
-
+    /**
+     * 脱敏状态
+     */
+    public static final String User_pho_secret = BuildConfig.APPLICATION_ID + "app_secret";
     /**
      * 保存登陆ip
      */
@@ -230,7 +233,7 @@ public class SharedPrefUtil {
 //            "system_name": "crm",
 //            "info": "success",
 //            "status": 1
-    public void setUserInfor(String img, String session_id, String token, String admin, String role_id, String name, String sex, String telephone, String department_id, String department_name, String role_name, String system_name) {
+    public void setUserInfor(String img, String session_id, String token, String admin, String role_id, String name, String sex, String telephone, String department_id, String department_name, String role_name, String system_name,String pho_secret) {
         SharedPreferences.Editor edit = sharedPrefs.edit();
         edit.putString(USER_img, img);
         edit.putString(USER_session_id, session_id);
@@ -244,6 +247,7 @@ public class SharedPrefUtil {
         edit.putString(User_department_name, department_name);
         edit.putString(User_role_name, role_name);
         edit.putString(User_system_name, system_name);
+        edit.putString(User_pho_secret, pho_secret);
         edit.commit();
     }
 

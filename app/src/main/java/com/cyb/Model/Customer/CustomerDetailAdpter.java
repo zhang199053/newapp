@@ -7,6 +7,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.cyb.Adpter.AdpterUtils.BaseCommonAdapter;
+import com.cyb.App.App;
 import com.cyb.Entity.CustomerDetailsTwoBean;
 import com.cyb.R;
 import com.cyb.Utils.HideDataUtil;
@@ -45,16 +46,23 @@ public class CustomerDetailAdpter extends BaseCommonAdapter<CustomerDetailsTwoBe
             ll_fzr.setVisibility(View.VISIBLE);
         }
         tv_tv_fzr_title.setText(data.getName() + "：");
+
         if (!TextUtils.isEmpty(data.getName())){
             if (data.getName().equals("电话")){
                 if (!TextUtils.isEmpty(data.getVal())){
-                    String pho= HideDataUtil.bankCardReplaceWithStar(data.getVal());
-                    tv_fzr.setText(pho);
+                    if (App.getSecret().equals("0")){
+                        tv_fzr.setText(data.getVal());
+                    }else if (App.getSecret().equals("1")){
+                        String pho= HideDataUtil.bankCardReplaceWithStar(data.getVal());
+                        tv_fzr.setText(pho);
+                    }
                 }
             }else {
                 tv_fzr.setText(data.getVal());
             }
         }
+
+
         if (data.getField().equals("name")) {
 //            就是这里，获取修改后的名字的值，给tv——name重新赋值
             Name = data.getVal();

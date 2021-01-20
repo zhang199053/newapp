@@ -246,7 +246,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                     if (result.getInfo().equals("success")) {
                         //登录成功保存持久化用户数据
                         LoginEntity data = result;
-                        SharedPrefUtil.getInstance().setUserInfor(data.getImg(), data.getSession_id(), data.getToken(), data.getAdmin() + "", data.getRole_id(), data.getName(), data.getSex(), data.getTelephone(), data.getDepartment_id(), data.getDepartment_name(), data.getRole_name(), data.getSystem_name());
+                        SharedPrefUtil.getInstance().setUserInfor(data.getImg(), data.getSession_id(), data.getToken(), data.getAdmin() + "", data.getRole_id(), data.getName(), data.getSex(), data.getTelephone(), data.getDepartment_id(), data.getDepartment_name(), data.getRole_name(), data.getSystem_name(),data.getIs_app_secret());
                         //保存是否登录过
                         SharedPrefUtil.getInstance().putBool(SharedPrefUtil.IS_LOGIN, true);
 //                        获取账户余额
