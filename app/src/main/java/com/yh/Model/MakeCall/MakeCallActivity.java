@@ -194,8 +194,21 @@ public class MakeCallActivity extends BaseActivity {
                 }
 
                 //判断客户是否存在
-                checkPermissionHttp();
+               // checkPermissionHttp();
 
+
+                //     调用拨打电话功能
+                String state = SharedPrefUtil.getInstance().getString(SharedPrefUtil.Login_Db_state, "1");
+                Log.e("state====/", state);
+                if (!state.equals("5")) {
+                    CallActivity.Call(MakeCallActivity.this, mContext, phone, "", 1);
+                } else {
+                    Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phone));
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    //mContext.startActivity(intent);
+                    startActivity(intent);
+                }
+                callboo = 1;
                 break;
             default:
                 break;
@@ -214,18 +227,7 @@ public class MakeCallActivity extends BaseActivity {
             public void onSuccess(CheckPermissionbean result) {
 
                 if (result.getData().getIs_exist() == 1) {
-                    //     调用拨打电话功能
-                    String state = SharedPrefUtil.getInstance().getString(SharedPrefUtil.Login_Db_state, "1");
-                    Log.e("state====/", state);
-                    if (!state.equals("5")) {
-                        CallActivity.Call(MakeCallActivity.this, mContext, phone, "", 1);
-                    } else {
-                        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phone));
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        //mContext.startActivity(intent);
-                        startActivity(intent);
-                    }
-                    callboo = 1;
+
                     customer_id = result.getData().getCustomer_id();
                 } else {
                     // AppToast.showToast("此用户不存在");
@@ -346,7 +348,7 @@ public class MakeCallActivity extends BaseActivity {
     protected void onStart() {
         super.onStart();
         if (callboo == 1) {
-            callNotoDialogs(customer_id);
+          //  callNotoDialogs(customer_id);
             ev_phone.setText("");
         }
     }
