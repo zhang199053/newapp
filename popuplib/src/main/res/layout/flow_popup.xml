@@ -21,15 +21,35 @@
             android:id="@+id/rl_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center">
+            android:layout_marginRight="15dp"
+            android:gravity="right">
+
+
+            <LinearLayout
+                android:layout_toLeftOf="@+id/btn_confirm"
+                android:id="@+id/ll_qx"
+                android:layout_width="101dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/ll_sxk_qz_back"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="重置"
+                    android:textColor="#333333"
+                    android:textSize="16dp" />
+            </LinearLayout>
+
             <Button
                 android:id="@+id/btn_confirm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="101dp"
+                android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:text="确定"
-                android:textColor="@color/normal"
-                android:background="@drawable/shape_circle_bg"
+                android:textColor="#ffffff"
+                android:background="@drawable/ll_sxk_qd_back"
                 android:layout_marginBottom="@dimen/dp_10"/>
         </RelativeLayout>
 

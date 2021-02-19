@@ -2,12 +2,25 @@ package com.xsl.Model.MakeCall;
 
 import android.Manifest;
 import android.app.Dialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
+import android.support.annotation.RequiresApi;
+import android.text.Editable;
+import android.text.InputType;
+import android.text.Selection;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -29,6 +42,8 @@ import com.xsl.ViewUtils.ProgressDialogUtil;
 
 import org.xutils.common.Callback;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,8 +60,7 @@ public class MakeCallActivity extends BaseActivity {
     private ImageView iv_tg, iv_bd;
     private TextView tv_1, tv_2, tv_3, tv_4, tv_5, tv_6, tv_7, tv_8, tv_9, tv_01, tv_0, tv_02;
     private LinearLayout ll_1, ll_2, ll_3, ll_4, ll_5, ll_6, ll_7, ll_8, ll_9, ll_01, ll_0, ll_02;
-
-    private TextView ev_phone;
+    private EditText ev_phone;
     private String phone = "";
     private NavigationBar nb_agre;
     private View v_line;
@@ -58,6 +72,7 @@ public class MakeCallActivity extends BaseActivity {
         return R.layout.make_call_activity;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void initView() {
         v_line = findViewById(R.id.v_line);
@@ -76,6 +91,8 @@ public class MakeCallActivity extends BaseActivity {
                 return true;
             }
         });
+
+
         iv_bd = findViewById(R.id.iv_bd);
         iv_bd.setOnClickListener(this);
         ev_phone = findViewById(R.id.ev_phone);
@@ -123,7 +140,61 @@ public class MakeCallActivity extends BaseActivity {
         if (dialpanel_phone.length() == 11) {
             tt = phone.substring(0, 3) + "****" + phone.substring(8);
         }
+
         ev_phone.setText(tt);
+
+        ev_phone.setShowSoftInputOnFocus(false);
+        ev_phone.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                Window window = getWindow();
+                View view = window.peekDecorView();
+                if (view != null) {
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                }
+            }
+        });
+
+    }
+
+
+
+
+    //EditText中添加字符
+  private   void addEditTextValue(EditText editText, String textValue) {
+        //获得光标的位置
+        int index = editText.getSelectionStart();
+      Log.e("index==",index+"===");
+
+      StringBuffer sb = new StringBuffer(editText.getText().toString().trim());
+        //将字符插入光标所在的位置
+        sb = sb.insert(index, textValue);
+        editText.setText(sb.toString());
+      Log.e("index==",sb.toString()+"===yyy");
+
+      //设置光标的位置保持不变
+        Selection.setSelection(editText.getText(), index + 1);
+      Log.e("index==",index+"===tttt");
+
+  }
+
+    //EditText中删除字符
+  private   void deleteEditTextValue(EditText editText) {
+        StringBuffer sb = new StringBuffer(editText.getText().toString().trim());
+        int index = editText.getSelectionStart();
+        Log.e("index==",index+"///");
+        if (index > 0) {
+            sb = sb.delete(index - 1, index);
+            editText.setText(sb.toString());
+            Selection.setSelection(editText.getText(), index - 1);
+        }
+      Log.e("index==",phone+"///mm");
+      phone =editText.getText().toString();
+      if (phone.length() == 0) {
+          iv_tg.setVisibility(View.GONE);
+      }
+
     }
 
     @Override
@@ -177,6 +248,7 @@ public class MakeCallActivity extends BaseActivity {
                 break;
             case R.id.iv_tg:
                 del();
+                deleteEditTextValue(ev_phone);
                 break;
             case R.id.iv_bd:
                 if (Build.VERSION.SDK_INT >= 23) {
@@ -192,15 +264,19 @@ public class MakeCallActivity extends BaseActivity {
                     }
                 }
 
+                if (TextUtils.isEmpty(ev_phone.getText().toString())||ev_phone.getText().toString().equals("")){
+                    return;
+                }
+
                 //判断客户是否存在
              //   checkPermissionHttp();
 
                 String state = SharedPrefUtil.getInstance().getString(SharedPrefUtil.Login_Db_state, "1");
-                Log.e("state====/",state);
+                Log.e("state====/",state+"=="+ev_phone.getText().toString());
                 if (!state.equals("5")) {
-                    CallActivity.Call(MakeCallActivity.this, mContext,  phone,"",1);
+                    CallActivity.Call(MakeCallActivity.this, mContext,  ev_phone.getText().toString(),"",1);
                 } else {
-                    Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phone));
+                    Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + ev_phone.getText().toString()));
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     //mContext.startActivity(intent);
                     startActivity(intent);
@@ -212,6 +288,9 @@ public class MakeCallActivity extends BaseActivity {
                 break;
         }
     }
+
+
+
 
 
     private void checkPermissionHttp() {
@@ -389,18 +468,24 @@ public class MakeCallActivity extends BaseActivity {
 
     private void del() {
         if (!phone.equals("") && phone.length() > 0) {//判断输入框不为空，执行删除
-            ev_phone.setText(phone.substring(0, phone.length() - 1));
+           // ev_phone.setText(phone.substring(0, phone.length() - 1));
 
         }
-        phone = ev_phone.getText().toString();
-        if (phone.length() == 0) {
-            iv_tg.setVisibility(View.GONE);
-        }
+
     }
 
     private void showPhone(TextView tv) {
+
+        if (ev_phone.getText().toString().length()>=16){
+            return;
+        }
+
+
+       addEditTextValue(ev_phone, tv.getText().toString());
         phone = phone + tv.getText().toString();
-        ev_phone.setText(phone);
+      //  ev_phone.setText(phone);
+        Log.e("ev_phone===",ev_phone.getText().toString()+"=="+phone);
+
         if (phone.length() > 0) {
             iv_tg.setVisibility(View.VISIBLE);
             v_line.setBackgroundResource(R.color.sys_qs);
@@ -409,5 +494,7 @@ public class MakeCallActivity extends BaseActivity {
             v_line.setBackgroundResource(R.color.line_huise);
 
         }
+
+
     }
 }

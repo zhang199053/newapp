@@ -64,7 +64,8 @@
             android:screenOrientation="unspecified" /> <!-- 拨打电话 -->
         <activity
             android:name=".Model.MakeCall.MakeCallActivity"
-            android:screenOrientation="unspecified" /> <!-- 添加跟进记录 -->
+            android:screenOrientation="unspecified"
+           /> <!-- 添加跟进记录 -->
         <activity
             android:name=".Model.Log.AddFollowLogActivity"
             android:screenOrientation="unspecified" /> <!-- 关于我们 -->

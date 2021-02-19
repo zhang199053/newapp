@@ -15,18 +15,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
-import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
-import com.tencent.bugly.crashreport.CrashReport;
 import com.xsl.App.App;
 import com.xsl.App.BaseFragment;
 import com.xsl.Dialog.CurrencyDialog;
-import com.xsl.Entity.LoginEntity;
 import com.xsl.Entity.SystemBalanceEntity;
 import com.xsl.Entity.UserEntity;
-import com.xsl.Main.MainActivity;
 import com.xsl.Model.Login.LoginActivity;
 import com.xsl.Model.My.About.AboutusActivity;
 import com.xsl.R;
@@ -39,19 +32,13 @@ import com.xsl.Utils.SelectValueUtils;
 import com.xsl.Utils.SharedPrefUtil;
 import com.xsl.Utils.UrlUtils.Url;
 import com.xsl.ViewUtils.ProgressDialogUtil;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.xutils.common.Callback;
-
-import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
-
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
-
 import static com.xsl.Utils.UrlUtils.Url.DOMAIN_Logout;
-import static com.xsl.Utils.UrlUtils.Url.DOMAIN_User;
 import static com.xsl.Utils.UrlUtils.Url.DOMAIN_getSystemBalance;
 
 

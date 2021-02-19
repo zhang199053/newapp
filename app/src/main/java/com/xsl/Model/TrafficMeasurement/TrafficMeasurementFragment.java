@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
@@ -26,7 +27,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.rcw.popuplib.FilterBean;
 import com.rcw.popuplib.FixPopupWindow;
+import com.rcw.popuplib.FlowPopupWindow;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
@@ -67,7 +70,7 @@ import static com.xsl.Utils.UrlUtils.Url.DOMAIN_allTelRecordDetail;
  * 2020/11/27
  * Describe ：通话记录统计
  */
-public class TrafficMeasurementFragment extends BaseFragment implements View.OnClickListener {
+public class TrafficMeasurementFragment extends BaseFragment implements View.OnClickListener,FlowPopupWindow.FlowPopupMonitor {
     private SmartRefreshLayout srl_refresh;
     //    话务统计数据
     private List<ConversationEntity.DataBeanX.DataBean> datas = new ArrayList<>();
@@ -86,14 +89,15 @@ public class TrafficMeasurementFragment extends BaseFragment implements View.OnC
     private TextView title;
     int mScreenWidth, mScreenHeight;
     WindowManager wm;
-    private LinearLayout lay,ll_px;
+    private LinearLayout lay,ll_px,ll_sx;
     private View contentView;
     LinearLayout layout;
     LinearLayout.LayoutParams params;
     FixPopupWindow mFixPopupWindow;
+    private FlowPopupWindow FlowPopupWindow;
     private String sortstr,editstr;
     private Handler handler = new Handler();
-
+    private List<FilterBean> lists=new ArrayList<>();
 
     @Override
     protected int setContentView() {
@@ -127,14 +131,22 @@ public class TrafficMeasurementFragment extends BaseFragment implements View.OnC
         searchRay=rootView.findViewById(R.id.searchRay);
         search_ray=rootView.findViewById(R.id.search_ray);
         search_ray.setOnClickListener(this);
+        ll_sx=rootView.findViewById(R.id.ll_sx);
+        ll_sx.setOnClickListener(this);
         content=rootView.findViewById(R.id.content);
         content.addTextChangedListener(textWatcher);
         title=rootView.findViewById(R.id.title);
         title.setText("通话记录");
 
 
-        initData(p,"desc","");
 
+        List<FilterBean.TableMode> list=new ArrayList<>();
+        list.add(new FilterBean.TableMode("不限"));
+        list.add(new FilterBean.TableMode("接通"));
+        list.add(new FilterBean.TableMode("未接通"));
+        lists.add(new FilterBean("通话状态",new FilterBean.TableMode("不限"),list));
+
+        initData(p,"desc","",connect);
         mAdpter = new CalJuAdapter(mContext,datas);
         rv_list.setLayoutManager(new LinearLayoutManager(mContext));
         rv_list.setAdapter(mAdpter);
@@ -144,7 +156,7 @@ public class TrafficMeasurementFragment extends BaseFragment implements View.OnC
             public void onRefresh(RefreshLayout refreshlayout) {
                 datas.clear();
                 p = 1;
-                initData(p,sortstr,"");
+                initData(p,sortstr,"",connect);
                 srl_refresh.finishRefresh();
             }
         });
@@ -158,7 +170,7 @@ public class TrafficMeasurementFragment extends BaseFragment implements View.OnC
                     return;
                 }
                 p =p+ 1;
-                initData(p,sortstr,"");
+                initData(p,sortstr,"",connect);
                 srl_refresh.finishLoadMore();
 
             }
@@ -169,7 +181,7 @@ public class TrafficMeasurementFragment extends BaseFragment implements View.OnC
 
     }
     //加载数据
-    private void initData(int mPage,String ordertype ,String pho) {
+    private void initData(int mPage,String ordertype ,String pho,String is_connect) {
         if (!TextUtils.isEmpty(App.getToken())) {
             Map<String, Object> parame = new HashMap<>();
             parame.put("token", App.getToken());
@@ -178,6 +190,7 @@ public class TrafficMeasurementFragment extends BaseFragment implements View.OnC
             parame.put("start_time", "");
             parame.put("end_time", "");
             parame.put("order",ordertype);
+            parame.put("is_connect",is_connect);
             if (!TextUtils.isEmpty(pho)){
                 parame.put("customerName",pho);
             }
@@ -220,6 +233,7 @@ public class TrafficMeasurementFragment extends BaseFragment implements View.OnC
 
 
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -245,13 +259,41 @@ public class TrafficMeasurementFragment extends BaseFragment implements View.OnC
                 }else {
                     p=1;
                     datas.clear();
-                    initData(p,sortstr,"");
+                    initData(p,sortstr,"",connect);
                 }
 
+                break;
+            case R.id.ll_sx:
+                initFlowPopup();
                 break;
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private void initFlowPopup() {
+        FlowPopupWindow.Builder builder=new FlowPopupWindow.Builder(getActivity());
+        //设置数据
+        builder.setValues(lists);
+        //设置标签字体的颜色，这里的color不是values目录下的color,而是res文件夹下的color
+        builder.setLabelColor(R.color.sys_qs);
+        //设置标签的背景色
+        builder.setLabelBg(R.drawable.flow_popup);
+        //设置GridLayout的列数
+        builder.setColumnCount(4);
+        //初始化popupWindow的相关布局及数据展示
+        builder.build();
+        //创建popup
+        FlowPopupWindow=builder.createPopup();
+        //设置数据监听接口
+        FlowPopupWindow.setFlowPopupMonitor(this);
+        FlowPopupWindow.showAsDropDown(ll_sx);
+        FlowPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+            //    ivArrow.setImageResource(R.drawable.arrow_down);
+            }
+        });
+    }
 
     private void SortPopwindow() {
         contentView = LayoutInflater.from(getActivity()).inflate(
@@ -280,7 +322,7 @@ public class TrafficMeasurementFragment extends BaseFragment implements View.OnC
                     sortstr="desc";
                 }
                 datas.clear();
-                initData(p,sortstr,"");
+                initData(p,sortstr,"",connect);
                 mFixPopupWindow.dismiss();
             }
 
@@ -365,14 +407,40 @@ public class TrafficMeasurementFragment extends BaseFragment implements View.OnC
             if (editstr == null||editstr.equals("") ) {
                 p=1;
                 datas.clear();
-                initData(p,sortstr,"");
+                initData(p,sortstr,"",connect);
                 return;
             }
             p=1;
             datas.clear();
-            initData(p,sortstr,editstr);
+            initData(p,sortstr,editstr,connect);
         }
     };
 
+    private String connect;
 
+    @Override
+    public void setFlowPopupResult(List<String> filterResult) {
+
+        Log.e("loh====","11");
+        p=1;
+        datas.clear();
+        for (int i=0;i<filterResult.size();i++){
+            Log.e("loh====///",filterResult.get(i));
+            if (filterResult.get(i).equals("通话状态-接通")){
+                connect="1";
+                initData(p,sortstr,editstr,connect);
+
+            }else if (filterResult.get(i).equals("通话状态-未接通")){
+                connect="0";
+                initData(p,sortstr,editstr,connect);
+
+            }else if (filterResult.get(i).equals("通话状态-不限")){
+                connect="";
+                initData(p,sortstr,editstr,connect);
+
+            }
+        }
+
+
+    }
 }

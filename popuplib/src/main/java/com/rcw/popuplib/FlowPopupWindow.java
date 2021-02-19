@@ -20,6 +20,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,14 +73,14 @@ public class FlowPopupWindow extends PopupWindow{
         //背景颜色
         private int colorBg = Color.parseColor("#F8F8F8");
         //默认的标题和标签的大小（sp）
-        private int titleTextSize = 16;
-        private int tabTextSize = 16;
+        private int titleTextSize = 14;
+        private int tabTextSize = 14;
         //标题字体颜色
         private int titleTextColor = Color.parseColor("#333333");
         //tab标签字体颜色
         private int labelTextColor = R.color.color_popup;
         //tab标签背景颜色
-        private int labelBg = R.drawable.shape_circle_bg;
+        private int labelBg = R.drawable.ll_sxk_qd_back;
         //当前加载的行数
         private int row = -1;
         private FlowPopupWindow mFlowPopupWindow;
@@ -204,6 +206,9 @@ public class FlowPopupWindow extends PopupWindow{
             mGridLayout=view.findViewById(R.id.grid_layout);
             //确定按钮
             Button btnConfirm=view.findViewById(R.id.btn_confirm);
+
+            LinearLayout ll_qx=view.findViewById(R.id.ll_qx);
+
             //设置数据展示区域的背景色
             ll.setBackgroundColor(colorBg);
             llContent = new LinearLayout(context);
@@ -232,9 +237,23 @@ public class FlowPopupWindow extends PopupWindow{
                     //监听接口的数据回调方法
                     flowPopupMonitor.setFlowPopupResult(labelLists);
                     //隐藏popupWindow
+
+
                     hidePopup();
                 }
             });
+
+            ll_qx.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    hidePopup();
+ //                   labelLists.clear();
+//                    mGridLayout.setRowCount(0);
+//                    mGridLayout.setColumnCount(0);
+
+                }
+            });
+
             //设置mGridLayout的属性参数
             mGridLayout.setOrientation(GridLayout.HORIZONTAL);
             mGridLayout.setRowCount(rowCount);
