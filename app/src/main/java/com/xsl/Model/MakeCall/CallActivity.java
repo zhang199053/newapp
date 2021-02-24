@@ -93,6 +93,8 @@ public class CallActivity {
             Map<String, Object> parame = new HashMap<>();
             parame.put("mobile", phone);
             parame.put("token", App.getToken());
+            Log.e("json===",parame.toString());
+
             HttpClient.getInstance().post(context, DOMAIN_CallAXB, parame, new BaseCallback<String>(String.class) {
                 @Override
                 public void onSuccess(String result) {
@@ -241,6 +243,7 @@ public class CallActivity {
             Map<String, Object> parame = new HashMap<>();
             parame.put("mobile", phone);
             parame.put("token", App.getToken());
+            Log.e("dialpanel_phone==",dialpanel_phone+"////");
             HttpClient.getInstance().post(context, DOMAIN_AXBCALLDJ, parame, new BaseCallback<String>(String.class) {
                 @Override
                 public void onSuccess(String result) {
