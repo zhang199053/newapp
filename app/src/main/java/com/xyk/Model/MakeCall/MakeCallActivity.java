@@ -274,9 +274,9 @@ public class MakeCallActivity extends BaseActivity {
                 String state = SharedPrefUtil.getInstance().getString(SharedPrefUtil.Login_Db_state, "1");
                 Log.e("state====/",state+"=="+ev_phone.getText().toString());
                 if (!state.equals("5")) {
-                    CallActivity.Call(MakeCallActivity.this, mContext,  ev_phone.getText().toString(),"",1);
+                    CallActivity.Call(MakeCallActivity.this, mContext, phone,"",1);
                 } else {
-                    Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + ev_phone.getText().toString()));
+                    Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phone));
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     //mContext.startActivity(intent);
                     startActivity(intent);
