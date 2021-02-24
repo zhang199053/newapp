@@ -6,7 +6,7 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <com.xsl.ViewUtils.NavigationBar
+    <com.yhj.ViewUtils.NavigationBar
         android:id="@+id/nb_agre"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -218,8 +218,8 @@
 
 九、如何联系我们
 
-用户在使用宁波中秉智能产品过程中，可通过【客服热线021-26136668】与我们联系以获取技术支持保障以及个人信息安全方面的咨询。我们的邮寄联系方式如下：
-电子邮箱：584245495@qq.com
+用户在使用宁波中秉智能产品过程中，可通过【客服热线13813822105】与我们联系以获取技术支持保障以及个人信息安全方面的咨询。我们的邮寄联系方式如下：
+电子邮箱：3042984443@qq.com
 
 一般情况下，我们将在收到信息并核实您身份后15天内回复意见或处理结果。"
                 android:textColor="#ff313131"

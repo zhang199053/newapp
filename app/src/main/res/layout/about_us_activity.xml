@@ -102,7 +102,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="公司名称：羊毛猪网络科技(上海)有限公司"
+                    android:text="公司名称：南京千尘文化传媒有限公司"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
@@ -110,7 +110,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="客服热线：021-26136668"
+                    android:text="客服热线：13813822105"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
@@ -118,7 +118,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="公司邮箱：584245495@qq.com"
+                    android:text="公司邮箱：3042984443@qq.com"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:visibility="visible" />
@@ -127,7 +127,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="羊毛猪网络科技(上海)有限公司主营《销三郎》软件，是专业的外呼系统+客户管理平台等企业SaaS服务提供商。企业专注于管理软件的营销、咨询、研究、实施、培训、服务，致力于为用户提供一站式企业服务解决方案。《马上营销》软件是基于云计算技术为企业提供移动化、数字化、智能化综合性信息解决方案的服务商。公司拥有一支业内资深的项目管理人员、软件开发人员、专业UI设计人员以及高素质的客户成功团队，专业为客户提供多领域全方位的解决方案。公司致力于企业数字化升级服务，为企业的智能化管理提供一站式服务平台。"
+                    android:text="南京千尘文化传媒有限公司主营《销行家》软件，是专业的外呼系统+客户管理平台等企业SaaS服务提供商。企业专注于管理软件的营销、咨询、研究、实施、培训、服务，致力于为用户提供一站式企业服务解决方案。《马上营销》软件是基于云计算技术为企业提供移动化、数字化、智能化综合性信息解决方案的服务商。公司拥有一支业内资深的项目管理人员、软件开发人员、专业UI设计人员以及高素质的客户成功团队，专业为客户提供多领域全方位的解决方案。公司致力于企业数字化升级服务，为企业的智能化管理提供一站式服务平台。"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:visibility="visible" />

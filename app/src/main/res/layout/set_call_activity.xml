@@ -6,7 +6,7 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <com.xsl.ViewUtils.NavigationBar
+    <com.yhj.ViewUtils.NavigationBar
         android:id="@+id/nb_agre"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -79,7 +79,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="销三郎小号平台"
+                android:text="销行家小号平台"
                 android:textColor="#ff1a1a1a"
                 android:textSize="15sp" />
 
