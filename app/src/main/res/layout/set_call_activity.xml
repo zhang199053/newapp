@@ -185,7 +185,7 @@
             android:orientation="vertical"
             android:paddingLeft="14sp"
             android:paddingRight="14sp"
-            android:visibility="gone">
+           >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -234,7 +234,7 @@
             android:orientation="horizontal"
             android:paddingLeft="14sp"
             android:paddingRight="14sp"
-            android:visibility="gone">
+           >
 
             <LinearLayout
                 android:layout_width="match_parent"
